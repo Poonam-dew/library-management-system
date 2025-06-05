@@ -1,15 +1,51 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 const cors = require('cors');
-require('dotenv').config();
+const authRoutes = require('./routes/auth');
+const bcrypt = require('bcryptjs');
+const User = require('./models/User'); 
 
+dotenv.config();
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use('/api', authRoutes);
 
-app.get('/', (req, res) => {
-  res.send('API is running...');
-});
+const createDefaultLibrarian = async () => {
+  try {
+    const existing = await User.findOne({ email: 'librarian@library.com' });
+    if (existing) return;
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+    const hashedPassword = await bcrypt.hash('your-password', 10);
+
+    const librarian = new User({
+      firstName: 'Test',
+      lastName: 'Librarian',
+      email: 'librarian@library.com',
+      password: hashedPassword,
+      role: 'librarian',
+      contact: '1234567890',
+      address: 'Library HQ',
+      branch: 'NA',
+      year: 'NA'
+    });
+
+    await librarian.save();
+    console.log('📘 Default librarian created');
+  } catch (err) {
+    console.error('Error creating default librarian:', err.message);
+  }
+};
+
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('Connected to MongoDB');
+     createDefaultLibrarian(); 
+    app.listen(process.env.PORT, () => {
+      console.log(`Server running on http://localhost:${process.env.PORT}`);
+    });
+  })
+  .catch(err => console.log(err));

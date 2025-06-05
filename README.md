@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## 🔑 Test Login Credentials
+
+### Librarian
+- Email: librarian@library.com
+- Password: your-password
+
+Use this account to log in as librarian and access librarian features.
+
 ## Available Scripts
 
 In the project directory, you can run:
