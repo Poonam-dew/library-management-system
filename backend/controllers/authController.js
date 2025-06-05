@@ -1,5 +1,8 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+require('dotenv').config();
 
 exports.registerUser = async (req, res) => {
   try {
@@ -28,7 +31,7 @@ exports.registerUser = async (req, res) => {
     });
 
     await user.save();
-    res.status(201).json({ message: 'Registration successful' });
+    res.status(201).json({ message: 'Registration successful... Await librarian approval.' });
   } catch (err) {
     console.error("Registration error:", err); // 👈 Add this
     res.status(500).json({ message: 'Server error', error: err.message });
@@ -46,7 +49,15 @@ exports.loginUser = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ message: "Invalid email or password" });
 
-    res.status(200).json({
+      if (user.role === 'student' && !user.isApproved) {
+      return res.status(403).json({ message: 'Account not yet approved by librarian.' });
+    }
+    
+    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, {
+      expiresIn: '1d',
+    });
+
+    res.status(200).json({token,
       message: "Login successful",
       user: {
         id: user._id,

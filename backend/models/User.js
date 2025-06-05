@@ -9,7 +9,11 @@ const userSchema = new mongoose.Schema({
   password:  { type: String, required: true },
   collegeYear: { type: String },
   branch:    { type: String},
-  role:      { type: String, enum: ['student', 'librarian'], default: 'student' }
+  role:      { type: String, enum: ['student', 'librarian'], default: 'student' },
+   isApproved: {
+    type: Boolean,
+    default: false   
+  }
 });
 
 module.exports = mongoose.model('User', userSchema);

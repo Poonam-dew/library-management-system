@@ -39,11 +39,32 @@ const createDefaultLibrarian = async () => {
   }
 };
 
+const createDefaultStudent = async () => {
+  const existing = await User.findOne({ email: 'student@library.com' });
+  if (!existing) {
+    const hashedPassword = await bcrypt.hash('student123', 10);
+    await User.create({
+      firstName: 'Demo',
+      lastName: 'Student',
+      email: 'student@library.com',
+      password: hashedPassword,
+      role: 'student',
+      isApproved: true,
+      contact: '1234567890',
+      address: 'Demo Lane',
+      collegeYear: '2nd',
+      branch: 'CSE'
+    });
+    console.log('✅ Default student created');
+  }
+};
+
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('Connected to MongoDB');
      createDefaultLibrarian(); 
+     createDefaultStudent();
     app.listen(process.env.PORT, () => {
       console.log(`Server running on http://localhost:${process.env.PORT}`);
     });

@@ -36,7 +36,7 @@ const Login = () => {
         email: formData.email,
         password: formData.password,
       });
-
+      localStorage.setItem('token', res.data.token);
       const { role, name } = res.data.user;
 
       if (formData.role === 'librarian' && formData.email !== 'librarian@library.com') {
@@ -53,9 +53,19 @@ const Login = () => {
       } else {
         navigate('/librarian-dashboard');
       }
-    } catch (err) {
-      setMessage(err.response?.data?.message || 'Login failed');
+    } catch (error) {
+  if (error.response) {
+    const msg = error.response.data.message;
+
+    if (msg === 'Account not yet approved by librarian.') {
+      setMessage('Your account is pending approval by the librarian.');
+    } else {
+      setMessage(msg);  // Other errors like invalid credentials
     }
+  } else {
+    setMessage('Something went wrong. Please try again.');
+  }
+}
   };
 
   return (
@@ -91,10 +101,16 @@ const Login = () => {
   🔑 Test Librarian → Email: <b>librarian@library.com</b> | Password: <b>your-password</b>
 </p>
 </h2>
+  <h2><p style={{ fontSize: '0.9rem', color: '#666' }}>
+  🔑 Test Approved student→ Email: <b>student@library.com</b> | Password: <b>student123</b>
+</p>
+</h2>
         <div className="login-links">
           <Link to="/register">Don't have an account? Register</Link>
           <br />
           <Link to="/forgot-password">Forgot Password?</Link>
+          {setMessage && <p className="message">{setMessage}</p>}
+
         </div>
       </form>
     </div>
