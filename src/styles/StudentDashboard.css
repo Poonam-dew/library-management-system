@@ -1,0 +1,84 @@
+.student-dashboard {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 10px;
+  font-family: Arial, sans-serif;
+}
+
+.issues-list, .search-results {
+  list-style: none;
+  padding: 0;
+}
+
+.issue-item, .book-item {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.book-image {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.book-info h3 {
+  margin: 0 0 6px 0;
+}
+
+.book-info p {
+  margin: 3px 0;
+}
+
+.book-info button {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background-color: #4a7cfb;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.book-info button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.search-bar {
+  display: flex;
+  margin-bottom: 15px;
+  gap: 8px;
+}
+
+.search-bar input {
+  flex-grow: 1;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.search-bar button {
+  padding: 8px 16px;
+  background-color: #4a7cfb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.error {
+  color: #cc0000;
+  margin: 10px 0;
+}
+
+.success {
+  color: #008000;
+  margin: 10px 0;
+}

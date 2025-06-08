@@ -3,8 +3,11 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
+const librarianRoutes= require('./routes/librarian')
 const bcrypt = require('bcryptjs');
 const User = require('./models/User'); 
+const bookRoutes = require('./routes/bookRoutes');
+const issuesRoutes = require('./routes/issues');
 
 dotenv.config();
 const app = express();
@@ -12,6 +15,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api', authRoutes);
+app.use('/api/librarian',librarianRoutes);
+app.use('/api/books', bookRoutes);
+app.use('/api/issues', issuesRoutes);
 
 const createDefaultLibrarian = async () => {
   try {

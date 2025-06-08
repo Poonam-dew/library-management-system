@@ -13,7 +13,12 @@ const userSchema = new mongoose.Schema({
    isApproved: {
     type: Boolean,
     default: false   
-  }
+  },
+  isActive: {
+  type: Boolean,
+  default: true,  // true means user can log in
+}
+
 });
 
 module.exports = mongoose.model('User', userSchema);

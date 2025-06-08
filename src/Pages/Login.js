@@ -46,12 +46,12 @@ const Login = () => {
 
       setMessage('Login successful ✅');
 
-      if (role === 'admin') {
-        navigate('/admin-dashboard');
+      if (role === 'librarian') {
+        navigate('/librarian-dashboard');
       } else if (role === 'student') {
         navigate('/student-dashboard');
       } else {
-        navigate('/librarian-dashboard');
+        navigate('/admin-dashboard');
       }
     } catch (error) {
   if (error.response) {

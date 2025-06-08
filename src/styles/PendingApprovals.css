@@ -1,0 +1,60 @@
+.pending-container {
+  padding: 20px;
+  background-color: #f7f9fc;
+  min-height: 100vh;
+}
+
+.pending-title {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.pending-message {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.pending-message.error {
+  color: red;
+}
+
+.pending-message.success {
+  color: green;
+}
+
+.pending-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.pending-table th,
+.pending-table td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: left;
+}
+
+.pending-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.pending-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.pending-table button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pending-table button:hover {
+  background-color: #218838;
+}

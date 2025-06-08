@@ -1,0 +1,76 @@
+.student-navbar {
+  background-color: #6c63ff;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  position: relative;
+}
+
+.student-navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Hamburger icon */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Nav links */
+.student-navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.student-navbar-links li {
+  cursor: pointer;
+  font-size: 1rem;
+  transition: opacity 0.2s;
+}
+
+.student-navbar-links li:hover {
+  opacity: 0.8;
+}
+
+.logout-link {
+  color: #ffb3b3;
+}
+
+.logout-link:hover {
+  color: #fff;
+}
+
+/* Responsive styling */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .student-navbar-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #6c63ff;
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    padding: 1rem 0;
+  }
+
+  .student-navbar-links.open {
+    display: flex;
+  }
+
+  .student-navbar-links li {
+    padding: 10px;
+    text-align: center;
+  }
+}

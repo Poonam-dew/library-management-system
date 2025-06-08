@@ -1,0 +1,65 @@
+.manage-container {
+  padding: 20px;
+  background-color: #f7f9fc;
+  min-height: 100vh;
+}
+
+.manage-title {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.manage-message {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.manage-message.error {
+  color: red;
+}
+
+.manage-message.success {
+  color: green;
+}
+
+.manage-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.manage-table th,
+.manage-table td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: left;
+}
+
+.manage-table th {
+  background-color: #343a40;
+  color: white;
+}
+
+.manage-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.toggle-button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background-color: #6c757d;
+}
+
+.toggle-button.active {
+  background-color: #28a745;
+}
+
+.toggle-button.inactive {
+  background-color: #dc3545;
+}

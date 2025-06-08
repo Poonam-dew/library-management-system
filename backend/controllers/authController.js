@@ -14,7 +14,7 @@ exports.registerUser = async (req, res) => {
     console.log("Received data:", req.body); // 👈 Add this
 
     const existingUser = await User.findOne({ email });
-    if (existingUser) return res.status(400).json({ message: 'User already exists' });
+    if (existingUser) return res.status(400).json({ message: 'User already exists...Go to Login' });
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -51,6 +51,10 @@ exports.loginUser = async (req, res) => {
 
       if (user.role === 'student' && !user.isApproved) {
       return res.status(403).json({ message: 'Account not yet approved by librarian.' });
+    }
+
+     if (!user.isActive) {
+      return res.status(403).json({ message: 'Your account is disabled. Please contact librarian.' });
     }
     
     const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, {
