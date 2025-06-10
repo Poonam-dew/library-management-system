@@ -23,7 +23,7 @@ export default function StudentNavbar() {
 
       <ul className={`student-navbar-links ${menuOpen ? 'open' : ''}`}>
         <li onClick={() => navigate('/student-dashboard')}>Dashboard</li>
-        <li onClick={() => navigate('/student-requests')}>My Requests</li>
+        <li onClick={() => navigate('/student/request')}>My Requests</li>
         <li onClick={() => navigate('/student-profile')}>Profile</li>
         <li onClick={handleLogout} className="logout-link">Logout</li>
       </ul>

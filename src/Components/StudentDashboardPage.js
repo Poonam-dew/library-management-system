@@ -52,7 +52,7 @@ useEffect(() => {
           📥 <span>Your Issued Books</span>
         </div>
         <div className="dashboard-card" onClick={() => navigate('/student/request')}>
-          📨 <span>Request New Book</span>
+          📨 <span>My Requests</span>
         </div>
       </div>
 

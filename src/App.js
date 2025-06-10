@@ -10,6 +10,9 @@ import ViewAllUsers from './Components/ViewAllUsers';
 import BookManagementPage from './Components/BookManagementPage';
 import StudentDashboard from './Pages/StudentDashboard';
 import StudentStats from './Components/StudentStats';
+import BrowseBooks from './Components/BrowseBooks';
+import ViewAllRequests from './Components/ViewAllRequests';
+import MyRequests from './Components/MyRequests';
 
 
 
@@ -30,8 +33,9 @@ function App() {
         <Route path="/librarian/view-all-users" element={<ViewAllUsers/>} />
         <Route path="/librarian/manage-books" element={<BookManagementPage/>} />
         <Route path="/student/stats" element={<StudentStats/>} />
-        
-
+        <Route path="/student/books" element={<BrowseBooks/>} />
+        <Route path="/librarian/view-all-requests" element={<ViewAllRequests/>} />
+        <Route path="/student/request" element={<MyRequests/>} />
       </Routes>
     </Router>
   );

@@ -45,6 +45,15 @@ const LibrarianDashboard = () => {
         </div>
       </div>
 
+       <div
+        className="collapsible-box"
+        onClick={() => navigate('/librarian/view-all-requests')}
+      >
+        <div className="box-header">
+          <h3>View All Issue Requests</h3>
+        </div>
+      </div>
+
     </div>
   );
 };

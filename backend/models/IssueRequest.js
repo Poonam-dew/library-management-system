@@ -16,6 +16,9 @@ const issueRequestSchema = new mongoose.Schema({
     enum: ['pending', 'approved', 'rejected'],
     default: 'pending'
   },
+    message: {
+    type: String,
+  },
   issueDate: {
     type: Date
   },

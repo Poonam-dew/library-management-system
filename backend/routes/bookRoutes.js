@@ -36,7 +36,8 @@ router.get('/recent', async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch recent books', error: err });
   }
 });
-
+// Search books by title
+router.get('/search', bookController.searchBooks);
 
 // Get books by category
 router.get('/category/:category', bookController.getBooksByCategory);
@@ -50,8 +51,8 @@ router.put('/:id', verifyLibrarian, bookController.updateBook);
 // Delete a book (protected route)
 router.delete('/:id', verifyLibrarian, bookController.deleteBook);
 
-// Search books by title
-router.get('/search/:title', bookController.searchBooks);
+
+
 
 
 

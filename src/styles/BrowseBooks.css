@@ -1,0 +1,159 @@
+.browse-books {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1200px;
+  margin: auto;
+}
+.success-message1 {
+  color: green;
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.search-section {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.search-section input {
+  padding: 8px 12px;
+  font-size: 1rem;
+  width: 60%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.search-section button {
+  padding: 8px 16px;
+  background-color: #0055cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.search-section button:hover {
+  background-color: #003d99;
+}
+
+.request-msg {
+  text-align: center;
+  color: green;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.categories-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+}
+
+.category-card {
+  padding: 15px 20px;
+  background-color: #f0f4ff;
+  border: 1px solid #0055cc;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.category-card:hover {
+  background-color: #d6e4ff;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.book-card {
+  background-color: #fafafa;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.book-image {
+  width: 100px;
+  height: 140px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.book-card h3 {
+  font-size: 1.1rem;
+  margin: 10px 0 5px;
+  color: #222;
+}
+
+.book-card p {
+  font-size: 0.95rem;
+  margin: 3px 0;
+  color: #555;
+}
+
+.issue-btn {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.issue-btn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+.back-btn {
+  margin-bottom: 15px;
+  padding: 6px 12px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.books-in-category > h2,
+.search-results > h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #444;
+}
+

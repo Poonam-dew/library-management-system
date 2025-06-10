@@ -105,10 +105,15 @@ exports.deleteBook = async (req, res) => {
 // Search books by title
 exports.searchBooks = async (req, res) => {
   try {
-    const { title } = req.query;
-    const books = await Book.find({ title: { $regex: title, $options: 'i' } });
+    const { title } = req.query;  // get from query params
+    if (!title) {
+      return res.status(400).json({ message: 'Missing search query parameter: title' });
+    }
+    const books = await Book.find({ title: { $regex: title, $options: 'i' } }); // case-insensitive search
     res.json(books);
   } catch (error) {
+    console.error('Error searching books:', error);
     res.status(500).json({ message: 'Error searching books', error });
   }
 };
+
