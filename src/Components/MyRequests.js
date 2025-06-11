@@ -13,11 +13,11 @@ const MyRequests = () => {
 
   const fetchMyRequests = async () => {
     try {
-      const res = await axios.get('/api/issues/my',{
+      const res = await axios.get('/api/issues/my', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-      }); // This route should return student's own requests
+      });
       setRequests(res.data);
       setLoading(false);
     } catch (err) {
@@ -42,18 +42,68 @@ const MyRequests = () => {
               <th>Book</th>
               <th>Author</th>
               <th>Status</th>
+              <th>Issued On</th>
+              <th>Due Date</th>
               <th>Message</th>
               <th>Requested On</th>
+              <th>Return Info</th>
+
             </tr>
           </thead>
           <tbody>
-            {requests.map(req => (
+            {requests.map((req) => (
               <tr key={req._id}>
                 <td>{req.book?.title}</td>
                 <td>{req.book?.author}</td>
-                <td>{req.status}</td>
-                <td>{req.message || '—'}</td>
-                <td>{req.createdAt ? new Date(req.createdAt).toLocaleString() : '—'}</td>
+                <td className={`status ${req.status}`}>{req.status}</td>
+                <td>
+                  {req.issueDate
+                    ? new Date(req.issueDate).toLocaleDateString()
+                    : '—'}
+                </td>
+                <td>
+                  {req.dueDate
+                    ? new Date(req.dueDate).toLocaleDateString()
+                    : '—'}
+                </td>
+                <td>
+                  {req.status === 'approved' ? (
+                    <span className="message approved">
+                      Please collect the book from the library within 1 day of approval. Otherwise, the request will be auto-rejected.
+                    </span>
+                  ) : req.status === 'pending' ? (
+                    <span className="message pending">
+                      Your request is pending. Please wait for librarian approval.
+                    </span>
+                  ) : (
+                    <span className="message rejected">
+                      Your request has been rejected. Please contact the librarian.
+                    </span>
+                  )}
+                </td>
+                <td>
+                  {req.createdAt
+                    ? new Date(req.createdAt).toLocaleString()
+                    : '—'}
+                </td>
+                <td>
+  {req.returnDate ? (
+    <span className="message returned">
+      Returned on {new Date(req.returnDate).toLocaleDateString()}
+    </span>
+  ) : req.status === 'approved' && req.dueDate && new Date(req.dueDate) < new Date() ? (
+    <span className="message overdue">
+      ⛔ Return overdue! Please return immediately.
+    </span>
+  ) : req.status === 'approved' ? (
+    <span className="message active">
+      Book issued. Return by {new Date(req.dueDate).toLocaleDateString()}
+    </span>
+  ) : (
+    '—'
+  )}
+</td>
+
               </tr>
             ))}
           </tbody>

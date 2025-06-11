@@ -27,3 +27,27 @@ exports.rejectIssue = async (req, res) => {
     console.log(error)
   }
 };
+// PATCH /api/issues/:id/return - Librarian marks book as returned
+exports.markReturned = async (req, res) => {
+  try {
+    const issue = await IssueRequest.findById(req.params.id).populate('book');
+    if (!issue) return res.status(404).json({ message: 'Issue not found' });
+
+    if (issue.status !== 'approved') {
+      return res.status(400).json({ message: 'Only approved issues can be returned' });
+    }
+
+    issue.returnDate = new Date();
+    await issue.save();
+
+    // Increase availableCopies
+    issue.book.availableCopies += 1;
+    await issue.book.save();
+
+    res.json({ message: 'Book marked as returned', issue });
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to mark as returned', error: err.message });
+    
+  }
+};
+

@@ -9,7 +9,7 @@ const ViewAllRequests = () => {
   const [dueDates, setDueDates] = useState({});
   const [actionMessage, setActionMessage] = useState('');
 const [messageType, setMessageType] = useState(''); 
-
+const userToken = localStorage.getItem("token");
   useEffect(() => {
     fetchRequests();
   }, []);
@@ -17,15 +17,20 @@ const [messageType, setMessageType] = useState('');
   const fetchRequests = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('/api/issues/all');
+      const res = await axios.get('/api/issues/all',{
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
       setRequests(res.data);
-      console.log(res.data)
+     
     } catch (err) {
+      console.log(err)
       setError('Failed to fetch requests');
     }
     setLoading(false);
   };
-const userToken = localStorage.getItem("token");
+
 
  const handleApprove = async (id) => {
   const dueDate = dueDates[id];
@@ -75,6 +80,20 @@ const handleReject = async (id) => {
     setMessageType('error');
   }
 };
+const handleMarkReturned = async (id) => {
+  try {
+    await axios.patch(`/api/issues/${id}/return`, {}, {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    });
+    alert('Book marked as returned');
+    fetchRequests(); // or reload state
+  } catch (err) {
+    alert('Error marking book as returned');
+  }
+};
+
 
 
   return (
@@ -91,7 +110,9 @@ const handleReject = async (id) => {
       <th>Status</th>
       <th>Requested At</th>
       <th>Set Due Date</th>
+      <th>Selected Due date</th>
       <th>Actions</th>
+      <th>Returned Status</th>
     </tr>
   </thead>
   <tbody>
@@ -106,7 +127,7 @@ const handleReject = async (id) => {
             {req.status.charAt(0).toUpperCase() + req.status.slice(1)}
           </span>
         </td>
-        <td>{new Date(req.requestedAt).toLocaleString()}</td>
+        <td>{new Date(req.createdAt).toLocaleString()}</td>
 
         {/* 📅 Due Date Input */}
         <td>
@@ -121,6 +142,11 @@ const handleReject = async (id) => {
             }
           />
         </td>
+         <td>
+                  {req.dueDate
+                    ? new Date(req.dueDate).toLocaleDateString()
+                    : '—'}
+                </td>
 
         {/* ✅ Approve / ❌ Reject */}
         <td>
@@ -143,6 +169,22 @@ const handleReject = async (id) => {
               {req.status === 'approved' ? 'Approved' : 'Rejected'}
             </button>
           )}
+        </td>
+        <td>
+          {req.status === 'approved' && !req.returnDate && (
+  <button
+    className="return-btn"
+    onClick={() => handleMarkReturned(req._id)}
+  >
+    Mark as Returned
+  </button>
+)}
+{req.returnDate && (
+  <span className="returned-label">
+    ✅ Returned on {new Date(req.returnDate).toLocaleDateString()}
+  </span>
+)}
+
         </td>
       </tr>
     ))}

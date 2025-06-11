@@ -151,3 +151,29 @@
   background-color: #f2dede;
   color: #a94442;
 }
+.message.overdue {
+  color: red;
+  font-weight: bold;
+}
+.message.active {
+  color: green;
+}
+.message.returned {
+  color: blue;
+}
+.returned-label {
+  font-size: 0.9rem;
+  color: blue;
+}
+.return-btn {
+  background-color: #3498db;
+  color: white;
+  padding: 6px 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.return-btn:hover {
+  background-color: #2980b9;
+}

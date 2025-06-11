@@ -7,6 +7,7 @@ const { verifyStudent ,verifyLibrarian} = require('../middleware/auth');  // Mid
 const issueController = require('../controllers/issueController');
 // GET /api/issues/my - get issues for logged-in student
 // GET /api/issues/my
+
 router.post('/request', verifyStudent, async (req, res) => {
   const { bookId } = req.body;
 
@@ -35,13 +36,13 @@ router.post('/request', verifyStudent, async (req, res) => {
       book: bookId,
       student: req.user._id,
       status: 'pending',
-      message: 'Please visit the library within 1 day. Otherwise, the request will be auto-cancelled.',
+      message: 'You have Issued book successfully.Please come to library and take it.And Return before due date.',
     });
 
     await issue.save();
 
     // Decrease available copies by 1
-    book.availableCopies -= 1;
+    
     await book.save();
 
     res.json({ message: 'Book issue requested successfully', issue });
@@ -50,13 +51,31 @@ router.post('/request', verifyStudent, async (req, res) => {
     res.status(500).json({ message: 'Failed to request issue', error: err.message });
   }
 });
-
+router.get('/all', verifyLibrarian, issueController.getAllRequests);
 router.get('/my',verifyStudent, async (req, res) => {
   try {
     const requests = await IssueRequest.find({ student: req.user._id })
       .populate('book', 'title author')
       .sort({ createdAt: -1 });
     res.json(requests);
+    console.log(requests)
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to fetch requests' });
+    console.log(err)
+  }
+});
+router.get('/my/req',verifyStudent, async (req, res) => {
+  try {
+    const requests = await IssueRequest.find({ student: req.user._id })
+      .populate('book', 'title author')
+      .sort({ createdAt: -1 });
+      if(requests.status==="approved"){
+         res.json(requests);
+      }else{
+            res.json({message:"No book issued yet"});
+      }
+   
+    
   } catch (err) {
     res.status(500).json({ message: 'Failed to fetch requests' });
     console.log(err)
@@ -91,8 +110,9 @@ router.patch('/:id/approve', verifyLibrarian, async (req, res) => {
   }
 });
 
+router.patch('/:id/return', verifyLibrarian, issueController.markReturned);
 
-router.get('/all', issueController.getAllRequests);
+
 router.put('/reject/:id', verifyLibrarian, issueController.rejectIssue);
 
 // POST /api/issues/request - request to issue a book
