@@ -7,7 +7,7 @@ require('dotenv').config();
 exports.registerUser = async (req, res) => {
   try {
     const {
-      firstName, lastName, email, contact, address,
+      firstName, lastName, email, contact,enrollmentNo, address,
       password, collegeYear, branch, role
     } = req.body;
 
@@ -23,6 +23,7 @@ exports.registerUser = async (req, res) => {
       lastName,
       email,
       contact,
+      enrollmentNo,
       address,
       password: hashedPassword,
       collegeYear,

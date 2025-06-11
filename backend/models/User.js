@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
  
   password:  { type: String, required: true },
   collegeYear: { type: String },
+  enrollmentNo:{type:Number},
   branch:    { type: String},
   role:      { type: String, enum: ['student', 'librarian'], default: 'student' },
    isApproved: {

@@ -1,0 +1,51 @@
+.profile-container {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.info-card, .stats-card {
+  background-color: #f3f3f3;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.stats-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.stats-card li {
+  margin: 0.5rem 0;
+}
+
+.issued-section h3 {
+  margin-top: 2rem;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.book-card {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  transition: box-shadow 0.2s;
+}
+
+.book-card:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.overdue {
+  color: red;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}

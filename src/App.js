@@ -14,6 +14,7 @@ import BrowseBooks from './Components/BrowseBooks';
 import ViewAllRequests from './Components/ViewAllRequests';
 import MyRequests from './Components/MyRequests';
 import MyIssuedBooks from './Components/MyIssuedBooks';
+import StudentProfile from './Components/StudentProfile';
 
 
 
@@ -38,6 +39,8 @@ function App() {
         <Route path="/librarian/view-all-requests" element={<ViewAllRequests/>} />
         <Route path="/student/request" element={<MyRequests/>} />
          <Route path="/student/issued" element={<MyIssuedBooks/>} />
+         <Route path="/student-profile" element={<StudentProfile/>} />
+
       </Routes>
     </Router>
   );

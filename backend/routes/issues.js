@@ -47,7 +47,7 @@ router.post('/request', verifyStudent, async (req, res) => {
 
     res.json({ message: 'Book issue requested successfully', issue });
   } catch (err) {
-    console.error(err);
+    // console.error(err);
     res.status(500).json({ message: 'Failed to request issue', error: err.message });
   }
 });
@@ -58,10 +58,10 @@ router.get('/my',verifyStudent, async (req, res) => {
       .populate('book', 'title author')
       .sort({ createdAt: -1 });
     res.json(requests);
-    console.log(requests)
+    // console.log(requests)
   } catch (err) {
     res.status(500).json({ message: 'Failed to fetch requests' });
-    console.log(err)
+    // console.log(err)
   }
 });
 router.get('/my/req',verifyStudent, async (req, res) => {
@@ -78,7 +78,7 @@ router.get('/my/req',verifyStudent, async (req, res) => {
     
   } catch (err) {
     res.status(500).json({ message: 'Failed to fetch requests' });
-    console.log(err)
+    // console.log(err)
   }
 });
 // PATCH /api/issues/:id/approve

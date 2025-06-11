@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs');
 const User = require('./models/User'); 
 const bookRoutes = require('./routes/bookRoutes');
 const issuesRoutes = require('./routes/issues');
-
+const studentRoutes=require('./routes/studentRoute')
 dotenv.config();
 const app = express();
 
@@ -18,6 +18,7 @@ app.use('/api', authRoutes);
 app.use('/api/librarian',librarianRoutes);
 app.use('/api/books', bookRoutes);
 app.use('/api/issues', issuesRoutes);
+app.use('/api/student',studentRoutes);
 
 const createDefaultLibrarian = async () => {
   try {

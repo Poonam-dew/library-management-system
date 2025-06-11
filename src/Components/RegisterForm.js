@@ -9,7 +9,7 @@ const RegisterForm = () => {
     lastName: '',
     email: '',
     contact: '',
-    
+    enrollmentNo:'',
     password: '',
     confirmPassword: '',
     collegeYear: '',
@@ -48,7 +48,7 @@ const RegisterForm = () => {
       <input name="lastName" placeholder="Last Name" onChange={handleChange} required />
       <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
       <input name="contact" placeholder="Contact Number" onChange={handleChange} required />
-     
+      <input name="enrollmentNo" placeholder="Enrollment Number" onChange={handleChange} required />
       <input name="collegeYear" placeholder="College Year (e.g., 2nd Year)" onChange={handleChange} required />
       <input name="branch" placeholder="Branch (e.g., CSE)" onChange={handleChange} required />
       <input name="password" type="password" placeholder="Password" onChange={handleChange} required />

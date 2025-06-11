@@ -15,7 +15,7 @@ useEffect(() => {
     try {
       const res = await axios.get('/api/books/recent');
       setRecentBooks(res.data);
-      console.log(res.data)
+      // console.log(res.data)
     } catch (err) {
       console.error("Failed to fetch recent books", err);
     }
