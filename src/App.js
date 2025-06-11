@@ -13,6 +13,7 @@ import StudentStats from './Components/StudentStats';
 import BrowseBooks from './Components/BrowseBooks';
 import ViewAllRequests from './Components/ViewAllRequests';
 import MyRequests from './Components/MyRequests';
+import MyIssuedBooks from './Components/MyIssuedBooks';
 
 
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/student/books" element={<BrowseBooks/>} />
         <Route path="/librarian/view-all-requests" element={<ViewAllRequests/>} />
         <Route path="/student/request" element={<MyRequests/>} />
+         <Route path="/student/issued" element={<MyIssuedBooks/>} />
       </Routes>
     </Router>
   );

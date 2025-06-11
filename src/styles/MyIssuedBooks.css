@@ -1,0 +1,41 @@
+.issued-books-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.book-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 6rem;
+}
+
+.book-card {
+  background: #fefefe;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.book-img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  background: #eee;
+}
+
+.overdue {
+  color: red;
+  font-weight: bold;
+}
+
+.returned {
+  color: green;
+}
+
+.pending-return {
+  color: orange;
+}
