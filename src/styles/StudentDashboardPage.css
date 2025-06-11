@@ -96,13 +96,20 @@
   text-align: center;
   transition: transform 0.3s ease;
 }
-
-.recommended-book-card img {
+.book-image {
+  width: 100px;
+  height: 140px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+/* .recommended-book-card img {
   width: 100px;
   height: 140px;
   object-fit: cover;
   margin-bottom: 0.5rem;
-}
+} */
 
 .recommended-book-card h4 {
   font-size: 1rem;

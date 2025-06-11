@@ -127,37 +127,53 @@ router.get('/stats', verifyStudent, async (req, res) => {
   try {
     const studentId = req.user._id;
 
+    // Count: Total available books in library
     const totalBooks = await Book.countDocuments({ availableCopies: { $gt: 0 } });
 
+    // Count: Books approved and still with student
     const issuedBooksCount = await IssueRequest.countDocuments({
       student: studentId,
       status: 'approved',
       returnDate: null,
     });
 
+    // Count: Pending issue requests
     const pendingRequestsCount = await IssueRequest.countDocuments({
       student: studentId,
       status: 'pending',
     });
 
-    const overdueBooksCount = await IssueRequest.countDocuments({
+    // Fetch: Overdue books
+    const overdueBooks = await IssueRequest.find({
       student: studentId,
       status: 'approved',
       returnDate: null,
       dueDate: { $lt: new Date() },
-    });
+    }).populate('book'); // So we get title, author, etc.
 
+    const overdueBooksCount = overdueBooks.length;
+
+    // Send response
     res.json({
       totalBooks,
       issuedBooksCount,
       pendingRequestsCount,
       overdueBooksCount,
+      overdueBooks: overdueBooks.map(req => ({
+        bookTitle: req.book?.title,
+        author: req.book?.author,
+        dueDate: req.dueDate,
+        issueDate: req.issueDate,
+        _id: req._id,
+      })),
     });
+
   } catch (err) {
+    console.error(err.message);
     res.status(500).json({ message: 'Failed to fetch stats', error: err.message });
-    console.log(err.message)
   }
 });
+
 
 
 module.exports = router;

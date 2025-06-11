@@ -64,7 +64,7 @@ useEffect(() => {
     ) : (
       recentBooks.map((book) => (
         <div key={book._id} className="recommended-book-card">
-          <img src={book.image || bookcover } alt={book.title} />
+          <img src={book.image || bookcover }  className="book-image" alt={book.title} />
           <h4>{book.title}</h4>
           <p>Author:{book.author}</p>
         </div>
