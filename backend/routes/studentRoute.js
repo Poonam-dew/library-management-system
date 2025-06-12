@@ -4,6 +4,7 @@ const router = express.Router();
 const { verifyStudent } = require('../middleware/auth');
 const Book = require('../models/Book');
 const IssueRequest = require('../models/IssueRequest');
+const User = require('../models/User');
 
 router.get('/profile', verifyStudent, async (req, res) => {
   try {
@@ -59,5 +60,27 @@ router.get('/profile', verifyStudent, async (req, res) => {
     console.log(err);
   }
 });
+// Update student profile
+router.put('/profile', verifyStudent, async (req, res) => {
+  try {
+    const { name, contact, enrollmentNo, collegeYear, branch } = req.body;
+    const studentId = req.user._id;
+
+    const updatedStudent = await User.findByIdAndUpdate(
+      studentId,
+      { name, contact, enrollmentNo , collegeYear, branch },
+      { new: true }
+    );
+
+    res.json({
+      message: 'Profile updated successfully',
+      student: updatedStudent,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Failed to update profile' });
+  }
+});
+
 
 module.exports = router;

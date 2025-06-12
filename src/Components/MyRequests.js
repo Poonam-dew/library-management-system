@@ -69,7 +69,7 @@ const MyRequests = () => {
                 <td>
                   {req.status === 'approved' ? (
                     <span className="message approved">
-                      Please collect the book from the library within 1 day of approval. Otherwise, the request will be auto-rejected.
+                      You have Issued book successfully.Please come to library and take it.And Return before due date.
                     </span>
                   ) : req.status === 'pending' ? (
                     <span className="message pending">

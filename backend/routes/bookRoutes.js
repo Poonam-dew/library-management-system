@@ -60,6 +60,8 @@ router.delete('/:id', verifyLibrarian, bookController.deleteBook);
 
 
 
+
+
 // Add new category
 router.post('/categories', async (req, res) => {
   try {

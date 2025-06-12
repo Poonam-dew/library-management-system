@@ -6,10 +6,11 @@ export default function StudentNavbar() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleLogout = () => {
-    localStorage.removeItem('studentToken');
-    navigate('/student-login');
-  };
+ const handleLogout = () => {
+  localStorage.removeItem('token'); // Remove the JWT token
+  window.location.href = '/login';  // Redirect to login page
+};
+
 
   return (
     <nav className="student-navbar">
@@ -25,7 +26,7 @@ export default function StudentNavbar() {
         <li onClick={() => navigate('/student-dashboard')}>Dashboard</li>
         <li onClick={() => navigate('/student/request')}>My Requests</li>
         <li onClick={() => navigate('/student-profile')}>Profile</li>
-        <li onClick={handleLogout} className="logout-link">Logout</li>
+        <li onClick={handleLogout} className="logout-btn">Logout</li>
       </ul>
     </nav>
   );
