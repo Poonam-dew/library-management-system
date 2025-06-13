@@ -120,7 +120,7 @@ const handleMarkReturned = async (id) => {
       <tr key={req._id}>
         <td>{req.book?.title}</td>
         <td>{req.book?.author}</td>
-        <td>{req.student?.name}</td>
+        <td>{req.student?.firstName} {req.student?.lastName}</td>
         <td>{req.student?.email}</td>
         <td>
           <span className={`status-label ${req.status}`}>

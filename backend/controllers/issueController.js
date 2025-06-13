@@ -5,8 +5,9 @@ exports.getAllRequests = async (req, res) => {
   try {
     const requests = await IssueRequest.find()
       .populate('book', 'title author')
-      .populate('student', 'name email');
+      .populate('student', 'firstName lastName email');
     res.json(requests);
+    
   } catch (err) {
     res.status(500).json({ message: 'Failed to fetch issue requests', error: err });
   }

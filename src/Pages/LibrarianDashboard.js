@@ -54,6 +54,15 @@ const LibrarianDashboard = () => {
         </div>
       </div>
 
+       <div
+        className="collapsible-box"
+        onClick={() => navigate('/librarian/add-librarian')}
+      >
+        <div className="box-header">
+          <h3>Add Librarian</h3>
+        </div>
+      </div>
+
     </div>
   );
 };

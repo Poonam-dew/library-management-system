@@ -1,0 +1,61 @@
+/* src/styles/AddLibrarianForm.css */
+.add-librarian-container {
+  max-width: 500px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fafafa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-librarian-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #1a1a1a;
+}
+
+.add-librarian-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.add-librarian-form label {
+  font-weight: bold;
+  color: #444;
+}
+
+.add-librarian-form input {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.add-librarian-form button {
+  margin-top: 1rem;
+  padding: 0.7rem;
+  background-color: #1d3557;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.add-librarian-form button:hover {
+  background-color: #457b9d;
+}
+
+.success {
+  color: green;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.error {
+  color: red;
+  margin-top: 0.5rem;
+  text-align: center;
+}
