@@ -49,6 +49,30 @@ router.post('/add', verifyLibrarian, async (req, res) => {
   }
 });
 
+// Get librarian profile
+router.get('/profile', verifyLibrarian, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).select('-password'); // 🟢 This will work now
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to fetch profile', error: err.message });
+  }
+});
+
+
+
+// Update librarian profile
+router.put('/profile', verifyLibrarian, async (req, res) => {
+  try {
+    const updates = (({ firstName, lastName, contact, collegeYear, branch, enrollmentNo }) => 
+      ({ firstName, lastName, contact, collegeYear, branch, enrollmentNo }))(req.body);
+
+    const updatedUser = await User.findByIdAndUpdate(req.user._id, updates, { new: true });
+    res.json({ message: 'Profile updated', user: updatedUser });
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to update profile', error: err.message });
+  }
+});
 
 
 module.exports = router;

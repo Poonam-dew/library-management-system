@@ -16,6 +16,7 @@ import MyRequests from './Components/MyRequests';
 import MyIssuedBooks from './Components/MyIssuedBooks';
 import StudentProfile from './Components/StudentProfile';
 import AddLibrarianForm from './Components/AddLibrarianForm';
+import LibrarianProfile from './Components/LibrarianProfile';
 
 
 
@@ -42,6 +43,7 @@ function App() {
          <Route path="/student/issued" element={<MyIssuedBooks/>} />
          <Route path="/student-profile" element={<StudentProfile/>} />
           <Route path="/librarian/add-librarian" element={<AddLibrarianForm/>} />
+           <Route path="/librarian/profile" element={<LibrarianProfile/>} />
 
 
       </Routes>

@@ -39,10 +39,10 @@ const Login = () => {
       localStorage.setItem('token', res.data.token);
       const { role, name } = res.data.user;
 
-      if (formData.role === 'librarian' && formData.email !== 'librarian@library.com') {
-        setMessage('Only test librarian account allowed');
-        return;
-      }
+      // if (formData.role === 'librarian' && formData.email !== 'librarian@library.com') {
+      //   setMessage('Only test librarian account allowed');
+      //   return;
+      // }
 
       setMessage('Login successful ✅');
 
