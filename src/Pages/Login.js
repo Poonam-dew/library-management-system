@@ -70,49 +70,49 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <form onSubmit={handleSubmit} className="login-form">
-        <h2>Login as {formData.role === 'student' ? 'Student' : 'Librarian'}</h2>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-          value={formData.email}
-          autoComplete="off" 
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={handleChange}
-          value={formData.password}
-          autoComplete="new-password"
-          required
-        />
-        <button type="submit">Login</button>
+  <form onSubmit={handleSubmit} className="login-form">
+  <h2>Login as {formData.role === 'student' ? 'Student' : 'Librarian'}</h2>
+  <input
+    type="email"
+    name="email"
+    placeholder="Email"
+    onChange={handleChange}
+    value={formData.email}
+    autoComplete="off" 
+    required
+  />
+  <input
+    type="password"
+    name="password"
+    placeholder="Password"
+    onChange={handleChange}
+    value={formData.password}
+    autoComplete="new-password"
+    required
+  />
+  <button type="submit">Login</button>
+  <button type="button" onClick={handleRoleToggle} className="role-toggle">
+    Switch to {formData.role === 'student' ? 'Librarian' : 'Student'}
+  </button>
 
-        <button type="button" onClick={handleRoleToggle} className="role-toggle">
-          Switch to {formData.role === 'student' ? 'Librarian' : 'Student'}
-        </button>
+  {message && <p className="message">{message}</p>}
 
-        <p className="message">{message}</p>
-         <h2><p style={{ fontSize: '0.9rem', color: '#666' }}>
-  🔑 Test Librarian → Email: <b>librarian@library.com</b> | Password: <b>your-password</b>
-</p>
-</h2>
-  <h2><p style={{ fontSize: '0.9rem', color: '#666' }}>
-  🔑 Test Approved student→ Email: <b>student@library.com</b> | Password: <b>student123</b>
-</p>
-</h2>
-        <div className="login-links">
-          <Link to="/register">Don't have an account? Register</Link>
-          <br />
-          <Link to="/forgot-password">Forgot Password?</Link>
-          {setMessage && <p className="message">{setMessage}</p>}
+  <div className="test-accounts">
+    <p>
+      🔑 <b>Test Librarian</b> → Email: <b>librarian@library.com</b> | Password: <b>your-password</b>
+    </p>
+    <p>
+      🔑 <b>Test Approved Student</b> → Email: <b>student@library.com</b> | Password: <b>student123</b>
+    </p>
+  </div>
 
-        </div>
-      </form>
+  <div className="login-links">
+    <Link to="/register">Don't have an account? Register</Link>
+    {/* <br />
+    <Link to="/forgot-password">Forgot Password?</Link> */}
+  </div>
+</form>
+
     </div>
   );
 };

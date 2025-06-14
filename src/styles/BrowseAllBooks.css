@@ -1,0 +1,311 @@
+/* ===== Browse Container with Overlay ===== */
+.browse-container {
+  position: relative;
+  min-height: 100vh;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  background: linear-gradient(120deg, #1c1f2b 0%, #2f3545 100%);
+  background-image: url('../assets/libimg.avif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.browse-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 39, 46, 0.82); /* semi-transparent overlay */
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* All direct children above overlay */
+.browse-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Title ===== */
+.browse-title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-shadow: 0 2px 8px #2226;
+  letter-spacing: 0.03em;
+}
+.browse-title1 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-shadow: 0 2px 8px #2226;
+  letter-spacing: 0.01em;
+}
+
+/* ===== Search Bar ===== */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.search-bar input {
+  background: rgba(35, 43, 56, 0.9);
+  border: 1.5px solid #2980b9;
+  color: #ecf0f1;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-size: 1.07rem;
+  transition: border-color 0.3s ease, background 0.3s;
+}
+
+.search-bar input:focus {
+  border-color: #2ecc71;
+  background: rgba(28, 31, 43, 0.95);
+  outline: none;
+}
+
+.search-bar button {
+  background: linear-gradient(90deg, #3498db 70%, #2ecc71 100%);
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(52, 152, 219, 0.25);
+  border: none;
+  font-size: 1.08rem;
+  transition: background 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background: linear-gradient(90deg, #2980b9 70%, #27ae60 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.search-error {
+  margin-top: 1rem;
+  color: #e74c3c;
+  font-size: 1.08rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ===== Category Grid ===== */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.2rem;
+  margin: 2rem 0 1.5rem 0;
+}
+
+.category-card {
+  background: rgba(52, 73, 94, 0.85);
+  color: #ecf0f1;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.12rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: background 0.3s, transform 0.2s;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.category-card:hover,
+.category-card.active {
+  background: linear-gradient(90deg, #3498db 70%, #2ecc71 100%);
+  color: #fff;
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* ===== Books Section ===== */
+.books-section {
+  margin: 2rem 0 1.5rem 0;
+ 
+ 
+}
+
+.books-section-title {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-shadow: 0 2px 8px #2226;
+}
+
+/* ===== Book Card Grid ===== */
+.book-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.book-card {
+  background: rgba(255, 255, 255, 0.685);
+  padding: 1.3rem 1rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(44, 62, 80, 0.13);
+  display: flex;
+  max-width:fit-content;
+  gap: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+  position: relative;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.book-card:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 32px rgba(52, 152, 219, 0.16);
+}
+
+.book-image {
+  /* width: 70px;
+  height: 100px; */
+  object-fit: cover;
+  border-radius: 7px;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.13);
+  background: #e0e0e0;
+  flex-shrink: 0;
+}
+
+.book-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.book-info h4 {
+  margin-bottom: 0.3rem;
+  color: #2c3e50;
+  font-size: 1.13rem;
+  font-weight: 700;
+}
+
+.book-info p {
+  margin: 0.2rem 0;
+  color: #555;
+  font-size: 0.98rem;
+}
+
+/* ===== Issue Button ===== */
+.issue-btn {
+  margin-top: 0.7rem;
+  padding: 0.6rem 1.1rem;
+  background: linear-gradient(90deg, #3498db 60%, #2ecc71 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.03rem;
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.13);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.issue-btn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #2980b9 60%, #27ae60 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.issue-btn:disabled {
+  background: #b2bec3;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+/* ===== Issue Message ===== */
+.issue-msg {
+  margin-top: 0.7rem;
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+  font-size: 0.98rem;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  font-weight: 500;
+}
+
+.issue-msg.success {
+  background-color: #e0f8e9;
+  color: #2e7d32;
+  border: 1px solid #81c784;
+}
+
+.issue-msg.error {
+  background-color: #fbe9e7;
+  color: #c62828;
+  border: 1px solid #ef5350;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 900px) {
+  .category-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+  .book-card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .book-card {
+    padding: 1rem 0.7rem;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .browse-container {
+    padding: 1.2rem 0.3rem 1rem 0.3rem;
+  }
+  .browse-title {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+  .search-bar {
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: stretch;
+  }
+  .search-bar input {
+    width: 100%;
+  }
+  .category-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+  }
+  .books-section-title {
+    font-size: 1.1rem;
+  }
+  .book-card-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .book-card {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0.5rem;
+  }
+  .book-image {
+    width: 60px;
+    height: 85px;
+    margin-bottom: 0.6rem;
+  }
+  .book-info h4 {
+    font-size: 1rem;
+  }
+}

@@ -51,6 +51,50 @@ router.post('/request', verifyStudent, async (req, res) => {
     res.status(500).json({ message: 'Failed to request issue', error: err.message });
   }
 });
+
+router.post('/request1', async (req, res) => {
+  const { bookId } = req.body;
+
+  if (!bookId) {
+    return res.status(400).json({ message: 'Book ID is required' });
+  }
+
+  try {
+    const book = await Book.findById(bookId);
+    if (!book) return res.status(404).json({ message: 'Book not found' });
+    if (book.availableCopies < 1) return res.status(400).json({ message: 'No available copies' });
+
+    // Check if already requested or issued
+    const existingRequest = await IssueRequest.findOne({
+      book: bookId,
+      student: req.user._id,
+      status: { $in: ['pending', 'approved'] },
+    });
+
+    if (existingRequest) {
+      return res.status(400).json({ message: 'You have already requested or issued this book' });
+    }
+
+    // Create issue request
+    const issue = new IssueRequest({
+      book: bookId,
+      student: req.user._id,
+      status: 'pending',
+      message: 'You have Issued book successfully.Please come to library and take it.And Return before due date.',
+    });
+
+    await issue.save();
+
+    // Decrease available copies by 1
+    
+    await book.save();
+
+    res.json({ message: 'Book issue requested successfully', issue });
+  } catch (err) {
+    // console.error(err);
+    res.status(500).json({ message: 'Failed to request issue', error: err.message });
+  }
+});
 router.get('/all', verifyLibrarian, issueController.getAllRequests);
 router.get('/my',verifyStudent, async (req, res) => {
   try {

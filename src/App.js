@@ -19,6 +19,8 @@ import AddLibrarianForm from './Components/AddLibrarianForm';
 import LibrarianProfile from './Components/LibrarianProfile';
 import Footer from './Components/Footer';
 import Home from './Pages/Home';
+import BrowseAllBooks from './Pages/BrowseAllBooks';
+import CategoryBooks from './Pages/CategoryBooks';
 
 // Inside your routes config:
 
@@ -45,6 +47,8 @@ function App() {
           <Route path="/librarian/add-librarian" element={<AddLibrarianForm/>} />
            <Route path="/librarian/profile" element={<LibrarianProfile/>} />
         <Route path="/" element={<Home/>} />
+         <Route path="/books" element={<BrowseAllBooks/>} />
+         <Route path="/books/category" element={<CategoryBooks/>} />
 
       </Routes>
       <Footer/>

@@ -6,95 +6,149 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
   min-height: 100vh;
-  background: #f5f7fa;
+  padding: 2rem;
+  background: linear-gradient(120deg, #1c1f2b 0%, #2f3545 100%);
+  background-image: url('../assets/libimg.avif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .login-form {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(44, 62, 80, 0.90);
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
   width: 100%;
   max-width: 400px;
+  color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
 
 .login-form h2 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   text-align: center;
-  color: #333;
+  color: #fff;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+  font-size: 2rem;
+  text-shadow: 0 2px 8px #2226;
 }
 
 .login-form input {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  border-radius: 10px;
+  border: 1.5px solid #2980b9;
+  font-size: 1.08rem;
+  background: #232b38;
+  color: #ecf0f1;
+  transition: border-color 0.2s;
 }
 
-.login-form button {
+.login-form input:focus {
+  border-color: #2ecc71;
+  outline: none;
+  background: #1c1f2b;
+}
+
+.login-form button[type="submit"] {
   width: 100%;
-  padding: 10px;
-  margin-top: 12px;
+  padding: 0.9rem 0;
+  margin-top: 1.2rem;
   border: none;
-  background: #4a90e2;
-  color: white;
-  font-size: 1rem;
-  border-radius: 8px;
+  background: linear-gradient(90deg, #3498db 60%, #2ecc71 100%);
+  color: #fff;
+  font-size: 1.12rem;
+  border-radius: 10px;
   cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 14px rgba(52, 152, 219, 0.25);
+  transition: background 0.3s, transform 0.2s;
 }
 
-.login-form button:hover {
-  background: #3a78c2;
+.login-form button[type="submit"]:hover {
+  background: linear-gradient(90deg, #2980b9 60%, #27ae60 100%);
+  transform: translateY(-2px) scale(1.03);
 }
 
 .role-toggle {
-  background: #f1f1f1;
-  color: #333;
-  margin-top: 10px;
+  background: #232b38;
+  color: #2ecc71;
+  border: 1.5px solid #2ecc71;
+  margin-top: 0.7rem;
+  padding: 0.7rem 0;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.role-toggle:hover {
+  background: #2ecc71;
+  color: #fff;
 }
 
 .message {
-  color: red;
-  margin-top: 10px;
+  margin-top: 0.7rem;
   text-align: center;
+  font-size: 1rem;
+  color: #ff7675;
+  font-weight: 500;
+}
+
+.login-form .test-accounts {
+  margin-top: 1.2rem;
+  color:rgb(193, 187, 187);
+  font-size: 0.98rem;
+  background: rgba(30,39,46,0.20);
+  border-radius: 8px;
+  padding: 0.7rem 0.5rem;
+  text-align: left;
+}
+
+.login-form .test-accounts b {
+  color: #2ecc71;
 }
 
 .login-links {
-  margin-top: 15px;
+  margin-top: 1.2rem;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .login-links a {
   text-decoration: none;
-  color: #4a90e2;
+  color: #3498db;
+  transition: color 0.2s;
+  font-weight: 500;
 }
 
 .login-links a:hover {
+  color: #2ecc71;
   text-decoration: underline;
 }
 
-/* 📱 Responsive tweaks for very small screens */
-@media (max-width: 400px) {
-  .login-form {
-    padding: 1.2rem;
-    border-radius: 8px;
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .login-container {
+    padding: 1rem;
   }
-
+  .login-form {
+    padding: 1.5rem 0.7rem;
+    border-radius: 10px;
+    font-size: 0.97rem;
+  }
   .login-form h2 {
     font-size: 1.3rem;
   }
-
-  .login-form input,
-  .login-form button {
-    font-size: 0.95rem;
-  }
-
   .login-links {
-    font-size: 0.85rem;
+    font-size: 0.93rem;
   }
 }
