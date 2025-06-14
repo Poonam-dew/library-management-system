@@ -17,8 +17,8 @@ import MyIssuedBooks from './Components/MyIssuedBooks';
 import StudentProfile from './Components/StudentProfile';
 import AddLibrarianForm from './Components/AddLibrarianForm';
 import LibrarianProfile from './Components/LibrarianProfile';
-
-
+import Footer from './Components/Footer';
+import Home from './Pages/Home';
 
 // Inside your routes config:
 
@@ -44,9 +44,10 @@ function App() {
          <Route path="/student-profile" element={<StudentProfile/>} />
           <Route path="/librarian/add-librarian" element={<AddLibrarianForm/>} />
            <Route path="/librarian/profile" element={<LibrarianProfile/>} />
-
+        <Route path="/" element={<Home/>} />
 
       </Routes>
+      <Footer/>
     </Router>
   );
 }
