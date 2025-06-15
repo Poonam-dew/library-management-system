@@ -1,84 +1,205 @@
 .student-dashboard {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 0 10px;
-  font-family: Arial, sans-serif;
+  position: relative;
+ 
+  margin: 2.5rem auto;
+  padding: 2rem 1.5rem;
+  background: linear-gradient(120deg, #1c1f2b 0%, #2f3545 100%);
+  background-image: url('../assets/libimg.avif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(30, 39, 46, 0.8);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
 }
 
+.student-dashboard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 39, 46, 0.82);
+  border-radius: 16px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.student-dashboard > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Search Bar ===== */
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.search-bar input {
+  flex-grow: 1;
+  padding: 0.7rem 1rem;
+  font-size: 1.05rem;
+  border-radius: 8px;
+  border: 1.5px solid #3498db;
+  background: #232b38;
+  color: #ecf0f1;
+  transition: border-color 0.2s;
+}
+
+.search-bar input:focus {
+  border-color: #2ecc71;
+  outline: none;
+  background: #1c1f2b;
+}
+
+.search-bar button {
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(90deg, #3498db 60%, #2ecc71 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(52, 152, 219, 0.18);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.search-bar button:hover {
+  background: linear-gradient(90deg, #2980b9 60%, #27ae60 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* ===== Issues List & Search Results ===== */
 .issues-list, .search-results {
   list-style: none;
   padding: 0;
+  margin: 1.5rem 0;
 }
 
 .issue-item, .book-item {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-bottom: 12px;
-  padding: 10px;
+  background: rgba(255,255,255,0.97);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(44, 62, 80, 0.10);
+  margin-bottom: 1.2rem;
+  padding: 1.2rem 1rem;
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 18px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.issue-item:hover, .book-item:hover {
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.13);
+  transform: translateY(-3px) scale(1.02);
 }
 
 .book-image {
   width: 80px;
-  height: 100px;
+  height: 105px;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 8px;
+  background: #e0e0e0;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+}
+
+.book-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .book-info h3 {
   margin: 0 0 6px 0;
+  color: #3498db;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .book-info p {
   margin: 3px 0;
+  color: #555;
+  font-size: 0.98rem;
 }
 
 .book-info button {
   margin-top: 8px;
-  padding: 6px 12px;
-  background-color: #4a7cfb;
+  padding: 7px 16px;
+  background: linear-gradient(90deg, #3498db 60%, #2ecc71 100%);
   border: none;
-  color: white;
-  border-radius: 5px;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.13);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.book-info button:hover {
+  background: linear-gradient(90deg, #2980b9 60%, #27ae60 100%);
+  transform: translateY(-2px) scale(1.03);
 }
 
 .book-info button:disabled {
   background-color: #aaa;
   cursor: not-allowed;
+  color: #fff;
 }
 
-.search-bar {
-  display: flex;
-  margin-bottom: 15px;
-  gap: 8px;
-}
-
-.search-bar input {
-  flex-grow: 1;
-  padding: 8px 12px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.search-bar button {
-  padding: 8px 16px;
-  background-color: #4a7cfb;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
+/* ===== Status/Feedback Messages ===== */
 .error {
-  color: #cc0000;
+  color: #e74c3c;
   margin: 10px 0;
+  font-weight: 600;
+  text-align: center;
 }
 
 .success {
-  color: #008000;
+  color: #2ecc71;
   margin: 10px 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 900px) {
+  .student-dashboard {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    border-radius: 10px;
+  }
+  .issue-item, .book-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 1rem 0.7rem;
+  }
+  .book-image {
+    width: 65px;
+    height: 85px;
+  }
+  .book-info h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .student-dashboard {
+    padding: 1rem 0.2rem 0.7rem 0.2rem;
+  }
+  .search-bar {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .issue-item, .book-item {
+    padding: 0.8rem 0.4rem;
+    border-radius: 8px;
+  }
+  .book-image {
+    width: 50px;
+    height: 65px;
+  }
 }

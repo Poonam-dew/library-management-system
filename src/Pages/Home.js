@@ -36,9 +36,9 @@ const Home = () => {
         <button className="view-books-btn" onClick={() => navigate('/books')}>View All Books</button>
       </div>
 
-      <div className="footer">
+      {/* <div className="footer">
         &copy; {new Date().getFullYear()} Library Management System | All rights reserved.
-      </div>
+      </div> */}
     </div>
   );
 };

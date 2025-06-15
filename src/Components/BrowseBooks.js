@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/BrowseBooks.css';
 import bookcover from '../assets/no_cover_available.png';
+import { useNavigate } from 'react-router-dom';
 
 const BrowseBooks = () => {
+   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [books, setBooks] = useState([]);
@@ -80,11 +82,15 @@ const BrowseBooks = () => {
   };
 
   return (
-    <div className="browse-books">
-      <h1 className="page-title">Browse Library Books</h1>
+    <div className="browse-books1">
+        <div className="browseback">
+          <button className="browsebookback" onClick={() => navigate(-1)}>Back</button>
+        
+        </div>
+      <h1 className="page-title1">Browse Library Books</h1>
 
       {/* Search */}
-      <div className="search-section">
+      <div className="search-section1">
         <input
           type="text"
           placeholder="Search any book by title..."
@@ -96,23 +102,23 @@ const BrowseBooks = () => {
       </div>
 
       {/* Request message */}
-      {requestMsg && <p className="request-msg">{requestMsg}</p>}
+      {requestMsg && <p className="request-msg1">{requestMsg}</p>}
 
       {/* Loading and error */}
-      {loading && <p className="loading">Loading...</p>}
-      {error && <p className="error">{error}</p>}
+      {loading && <p className="loading1">Loading...</p>}
+      {error && <p className="error1">{error}</p>}
 
       {/* Search results */}
       {searchQuery && !loading && (
-        <div className="search-results">
+        <div className="search-results1">
           <h2>Search Results</h2>
           {searchResults.length === 0 ? (
             <p>No books found for "{searchQuery}"</p>
           ) : (
-            <div className="books-grid">
+            <div className="books-grid1">
               {searchResults.map(book => (
-                <div key={book._id} className="book-card">
-                  <img src={book.image || bookcover} alt={book.title} className="book-image" />
+                <div key={book._id} className="book-card1">
+                  <img src={book.image || bookcover} alt={book.title} className="book-image1" />
                   <h3>{book.title}</h3>
                   <p><strong>Author:</strong> {book.author}</p>
                   <p><strong>Description:</strong> {book.description || 'No description available.'}</p>
@@ -120,7 +126,7 @@ const BrowseBooks = () => {
                   <button
                     onClick={() => handleRequestIssue(book._id)}
                     disabled={book.availableCopies === 0}
-                    className="issue-btn"
+                    className="issue-btn1"
                   >
                     {book.availableCopies === 0 ? 'Not Available' : 'Request to Issue'}
                   </button>
@@ -133,11 +139,11 @@ const BrowseBooks = () => {
 
       {/* Categories list */}
       { !loading && (
-        <div className="categories-list">
+        <div className="categories-list1">
           <h2>Book Categories</h2>
           <ul>
             {categories.map(cat => (
-              <li key={cat._id} onClick={() => fetchBooks(cat)} className="category-card">
+              <li key={cat._id} onClick={() => fetchBooks(cat)} className="category-card1">
                 {cat.name}
               </li>
             ))}
@@ -147,18 +153,18 @@ const BrowseBooks = () => {
 
       {/* Books in selected category */}
       { selectedCategory && !loading && (
-        <div className="books-in-category">
-          <button onClick={() => setSelectedCategory(null)} className="back-btn">← Back to Categories</button>
+        <div className="books-in-category1">
+          <button onClick={() => setSelectedCategory(null)} className="back-btn1">← Back to Categories</button>
           <h2>Books in "{selectedCategory.name}"</h2>
           {books.length === 0 ? (
             <p>No books found in this category.</p>
           ) : (
-            <div className="books-grid">
+            <div className="books-grid1">
               
               {books.map(book => (
-                <div key={book._id} className="book-card">
+                <div key={book._id} className="book-card1">
                   
-                  <img src={book.image  || bookcover} alt={book.title} className="book-image" />
+                  <img src={book.image  || bookcover} alt={book.title} className="book-image1" />
                   <h3>{book.title}</h3>
                   <p><strong>Author:</strong> {book.author}</p>
                   <p><strong>Description:</strong> {book.description || 'No description available.'}</p>
@@ -166,12 +172,12 @@ const BrowseBooks = () => {
                   <button
                     onClick={() => handleRequestIssue(book._id)}
                     disabled={book.availableCopies === 0}
-                    className="issue-btn"
+                    className="issue-btn1"
                   >
                     {book.availableCopies === 0 ? 'Not Available' : 'Request to Issue'}
                    
                   </button>
-                    {successBookId === book._id && requestMsg && <div className="success-message1">{requestMsg}</div>}
+                    {successBookId === book._id && requestMsg && <div className="success-message11">{requestMsg}</div>}
                 </div>
                 
               ))}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/LibrarianDashboard.css';
+import Footer from '../Components/Footer';
 
 const LibrarianDashboard = () => {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ const LibrarianDashboard = () => {
           <h3>Add Librarian</h3>
         </div>
       </div>
+    
     </div>
   );
 };

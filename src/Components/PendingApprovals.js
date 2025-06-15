@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/PendingApprovals.css';
 
@@ -8,6 +9,7 @@ const PendingApprovals = () => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
+ const navigate = useNavigate();
   useEffect(() => {
     fetchPendingStudents();
   }, []);
@@ -47,6 +49,10 @@ const PendingApprovals = () => {
 
   return (
     <div className="pending-container">
+        <div className="dashboard-nav-buttons">
+          <button onClick={() => navigate(-1)}>Back</button>
+         
+        </div>
       <h2 className="pending-title">Pending Student Approvals</h2>
       {loading && <p className="pending-message">Loading...</p>}
       {message && <p className="pending-message success">{message}</p>}
@@ -66,20 +72,21 @@ const PendingApprovals = () => {
               <th>Approve</th>
             </tr>
           </thead>
-          <tbody>
-            {pendingStudents.map((student) => (
-              <tr key={student._id}>
-                <td>{student.firstName} {student.lastName}</td>
-                <td>{student.email}</td>
-                <td>{student.collegeYear}</td>
-                <td>{student.branch}</td>
-                <td>{student.contactNo}</td>
-                <td>
-                  <button onClick={() => approveStudent(student._id)}>Approve</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+       <tbody>
+  {pendingStudents.map((student) => (
+    <tr key={student._id}>
+      <td data-label="Name">{student.firstName} {student.lastName}</td>
+      <td data-label="Email">{student.email}</td>
+      <td data-label="College Year">{student.collegeYear}</td>
+      <td data-label="Branch">{student.branch}</td>
+      <td data-label="Contact">{student.contactNo}</td>
+      <td data-label="Approve">
+        <button onClick={() => approveStudent(student._id)}>Approve</button>
+      </td>
+    </tr>
+  ))}
+</tbody>
+
         </table>
       )}
     </div>

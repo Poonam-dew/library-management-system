@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/MyIssuedBooks.css';
 import bookcover from '../assets/no_cover_available.png'
+import { useNavigate } from 'react-router-dom';
 
 const MyIssuedBooks = () => {
+   const navigate = useNavigate();
   const [issuedBooks, setIssuedBooks] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -35,20 +37,24 @@ const MyIssuedBooks = () => {
   };
 
   return (
-    <div className="issued-books-container">
+    <div className="issued-books-container3">
+        <div className="issueback">
+          <button className='issuebackbtn' onClick={() => navigate(-1)}>Back</button>
+         
+        </div>
       <h2>📕 My Issued Books</h2>
       {loading ? (
         <p>Loading...</p>
       ) : issuedBooks.length === 0 ? (
         <p>You haven’t issued any books yet.</p>
       ) : (
-        <div className="book-cards-grid">
+        <div className="book-cards-grid3">
           {issuedBooks.map(book => (
-            <div className="book-card" key={book._id}>
+            <div className="book-card3" key={book._id}>
               <img
                 src={book.book?.image || bookcover}
                 alt={book.book?.title}
-                className="book-img"
+                className="book-img3"
               />
               <h3>{book.book?.title}</h3>
               <p><strong>Author:</strong> {book.book?.author}</p>
@@ -56,11 +62,11 @@ const MyIssuedBooks = () => {
               <p><strong>Due Date:</strong> {new Date(book.dueDate).toLocaleDateString()}</p>
 
               {book.returnDate ? (
-                <p className="returned">✅ Returned on {new Date(book.returnDate).toLocaleDateString()}</p>
+                <p className="returned3">✅ Returned on {new Date(book.returnDate).toLocaleDateString()}</p>
               ) : isOverdue(book.dueDate, book.returnDate) ? (
-                <p className="overdue">⚠️ Return it! Due date passed</p>
+                <p className="overdue3">⚠️ Return it! Due date passed</p>
               ) : (
-                <p className="pending-return">🔁 Not yet returned</p>
+                <p className="pending-return3">🔁 Not yet returned</p>
               )}
             </div>
           ))}

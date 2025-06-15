@@ -28,7 +28,10 @@ import CategoryBooks from './Pages/CategoryBooks';
 function App() {
   return (
     <Router>
-      <Routes>
+      <div className='page-container'>
+        <div className='page-content'>
+                  <Routes>
+
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin-dashboard" element={<div>Welcome Admin</div>} />
@@ -52,6 +55,9 @@ function App() {
 
       </Routes>
       <Footer/>
+        </div>
+      </div>
+   
     </Router>
   );
 }

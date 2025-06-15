@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/MyRequests.css';
+import { useNavigate } from 'react-router-dom';
 
 const MyRequests = () => {
+  const navigate = useNavigate();
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -27,16 +29,20 @@ const MyRequests = () => {
   };
 
   return (
-    <div className="my-requests-container">
+    <div className="my-requests-containerr">
+      <div className="reqback">
+          <button className='myreqback' onClick={() => navigate(-1)}>Back</button>
+         
+        </div>
       <h2>📚 My Book Issue Requests</h2>
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
-        <p className="error">{error}</p>
+        <p className="errors">{error}</p>
       ) : requests.length === 0 ? (
         <p>You haven’t requested any books yet.</p>
       ) : (
-        <table className="requests-table">
+        <table className="requests-tables">
           <thead>
             <tr>
               <th>Book</th>
@@ -53,50 +59,50 @@ const MyRequests = () => {
           <tbody>
             {requests.map((req) => (
               <tr key={req._id}>
-                <td>{req.book?.title}</td>
-                <td>{req.book?.author}</td>
-                <td className={`status ${req.status}`}>{req.status}</td>
-                <td>
+                <td  data-label="Book">{req.book?.title}</td>
+                <td data-label="Author">{req.book?.author}</td>
+                <td data-label="Status" className={`status ${req.status}`}>{req.status}</td>
+                <td data-label="Issued On">
                   {req.issueDate
                     ? new Date(req.issueDate).toLocaleDateString()
                     : '—'}
                 </td>
-                <td>
+                <td data-label="Due Date">
                   {req.dueDate
                     ? new Date(req.dueDate).toLocaleDateString()
                     : '—'}
                 </td>
-                <td>
+                <td data-label="Message">
                   {req.status === 'approved' ? (
-                    <span className="message approved">
+                    <span className="message approved2">
                       You have Issued book successfully.Please come to library and take it.And Return before due date.
                     </span>
                   ) : req.status === 'pending' ? (
-                    <span className="message pending">
+                    <span className="message pending2">
                       Your request is pending. Please wait for librarian approval.
                     </span>
                   ) : (
-                    <span className="message rejected">
+                    <span className="message rejected2">
                       Your request has been rejected. Please contact the librarian.
                     </span>
                   )}
                 </td>
-                <td>
+                <td data-label="Requested On">
                   {req.createdAt
                     ? new Date(req.createdAt).toLocaleString()
                     : '—'}
                 </td>
-                <td>
+                <td data-label="Return Info">
   {req.returnDate ? (
-    <span className="message returned">
+    <span className="message returned2">
       Returned on {new Date(req.returnDate).toLocaleDateString()}
     </span>
   ) : req.status === 'approved' && req.dueDate && new Date(req.dueDate) < new Date() ? (
-    <span className="message overdue">
+    <span className="message overdue2">
       ⛔ Return overdue! Please return immediately.
     </span>
   ) : req.status === 'approved' ? (
-    <span className="message active">
+    <span className="message active2">
       Book issued. Return by {new Date(req.dueDate).toLocaleDateString()}
     </span>
   ) : (

@@ -120,7 +120,7 @@
 }
 
 /* Footer */
-.footer {
+/* .footer {
   text-align: center;
   margin-top: 5rem;
   padding: 1.8rem 2rem;
@@ -131,7 +131,7 @@
   box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.3);
   font-weight: 500;
   letter-spacing: 0.02em;
-}
+} */
 
 /* Responsive Breakpoints */
 @media (max-width: 1024px) {

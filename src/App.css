@@ -24,6 +24,18 @@
   color: white;
 }
 
+
+.page-container {
+  min-height: 100vh;
+ 
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+}
+
 .App-link {
   color: #61dafb;
 }

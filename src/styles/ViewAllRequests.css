@@ -1,145 +1,226 @@
+/* ===== Container ===== */
 .requests-container {
-  padding: 20px;
-  max-width: 1000px;
+  position: relative;
+  
+  margin: 2rem auto;
+  padding: 2rem 1.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(120deg, #1c1f2b 0%, #2f3545 100%);
+  background-image: url('../assets/libimg.avif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(30, 39, 46, 0.8);
+  color: #ecf0f1;
+  overflow-x: auto;
+}
+.con1{
+  max-width:1200px;
   margin: auto;
 }
+.manage-req {
+  margin-bottom: 1.2rem;
+}
 
+.back-btn1 {
+  padding: 0.6rem 1.4rem;
+  background: linear-gradient(90deg, #f1c40f 60%, #3498db 100%);
+  color: #232b38;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.02rem;
+  box-shadow: 0 2px 8px rgba(241, 196, 15, 0.13);
+  cursor: pointer;
+  transition: background 0.3s, color 0.2s, transform 0.2s;
+}
+
+.back-btn1:hover {
+  background: linear-gradient(90deg, #3498db 60%, #f1c40f 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+}
+
+
+.requests-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 39, 46, 0.82);
+  border-radius: 16px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.requests-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Heading ===== */
+.requests-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 8px #2226;
+}
+
+/* ===== Table ===== */
 .requests-table {
   width: 100%;
-  border-collapse: collapse;
-}
-
-.requests-table th, .requests-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-}
-
-.requests-table th {
-  background-color: #f4f4f4;
-}
-
-.error {
-  color: red;
-}.requests-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(44, 62, 80, 0.15);
+  overflow: hidden;
 }
 
 .requests-table th,
 .requests-table td {
-  border: 1px solid #ddd;
-  padding: 10px;
+  padding: 12px 15px;
   text-align: left;
+  font-size: 1rem;
+  color: #2c3e50;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .requests-table th {
-  background-color: #f2f2f2;
-  color: #333;
+  background: linear-gradient(90deg, #3498db 60%, #2ecc71 100%);
+  color: #fff;
+  font-weight: 700;
+  border-bottom: none;
 }
 
-.requests-table input[type="date"] {
-  padding: 5px;
-  margin-right: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+.requests-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== Status Labels ===== */
+.status-label {
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+.status-label.approved {
+  background-color: #27ae60;
+  color: white;
+}
+
+.status-label.rejected {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.status-label.pending {
+  background-color: #f39c12;
+  color: white;
+}
+
+/* ===== Buttons ===== */
+.approve-btn,
+.reject-btn,
+.return-btn,
+.approved-btn,
+.rejected-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  margin: 2px 4px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .approve-btn {
   background-color: #28a745;
   color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
 .approve-btn:hover {
   background-color: #218838;
-}
-
-
-.approved-btn {
-  background-color: #b4b7b5;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: not-allowed;
+  transform: translateY(-2px);
 }
 
 .reject-btn {
-  background-color: #f44336;
+  background-color: #dc3545;
   color: white;
 }
 
-.status-label.approved {
-  color: green;
-  font-weight: bold;
+.reject-btn:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
 }
 
-.status-label.rejected {
-  color: red;
-  font-weight: bold;
-}
-.approve-btn {
-  background-color: #4caf50;
+.return-btn {
+  background-color: #3498db;
   color: white;
-  padding: 4px 8px;
-  border: none;
-  margin: 2px;
+  margin-top: 6px;
 }
 
-.reject-btn {
-  background-color: #e53935;
-  color: white;
-  padding: 4px 8px;
-  border: none;
-  margin: 2px;
+.return-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
 }
 
 .approved-btn {
   background-color: #81c784;
   color: white;
-  padding: 4px 8px;
-  border: none;
+  cursor: default;
 }
 
 .rejected-btn {
   background-color: #ef9a9a;
   color: white;
-  padding: 4px 8px;
-  border: none;
+  cursor: default;
 }
 
-.status-label.approved {
-  color: green;
-  font-weight: bold;
-}
-.status-label.rejected {
-  color: red;
-  font-weight: bold;
-}
-.status-label.pending {
-  color: orange;
-  font-weight: bold;
-}
-
+/* ===== Due Date Input ===== */
 .due-label {
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
+  color: #34495e;
 }
 
 .due-input {
   width: 100%;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1.5px solid #3498db;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.due-input:focus {
+  border-color: #2ecc71;
+  box-shadow: 0 0 6px rgba(46, 204, 113, 0.5);
+}
+
+/* ===== Messages ===== */
+.error,
+.error-message {
+  color: #e74c3c;
+  font-weight: 600;
+  text-align: center;
+  margin: 1rem 0;
 }
 
 .action-message {
   margin-top: 10px;
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
 }
 
 .action-message.success {
@@ -151,29 +232,85 @@
   background-color: #f2dede;
   color: #a94442;
 }
-.message.overdue {
-  color: red;
-  font-weight: bold;
-}
-.message.active {
-  color: green;
-}
-.message.returned {
-  color: blue;
-}
+
+/* ===== Returned Label ===== */
 .returned-label {
   font-size: 0.9rem;
-  color: blue;
+  color: #2980b9;
+  font-weight: 600;
 }
-.return-btn {
-  background-color: #3498db;
-  color: white;
-  padding: 6px 10px;
-  margin-top: 5px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .requests-container {
+    padding: 1.5rem 1rem;
+  }
+  .requests-table th,
+  .requests-table td {
+    font-size: 0.9rem;
+    padding: 10px 8px;
+  }
 }
-.return-btn:hover {
-  background-color: #2980b9;
+
+@media (max-width: 768px) {
+  .requests-table,
+  .requests-table thead,
+  .requests-table tbody,
+  .requests-table th,
+  .requests-table td,
+  .requests-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .requests-table thead {
+    display: none;
+  }
+
+  .requests-table tr {
+    margin-bottom: 1.2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.1);
+    padding: 1rem;
+  }
+
+  .requests-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.9rem;
+  }
+
+  .requests-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #3498db;
+    flex-basis: 40%;
+  }
 }
+@media (max-width: 768px) {
+  .requests-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.9rem;
+    position: relative;
+  }
+
+  .requests-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #3498db;
+    flex-basis: 45%;
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+    text-align: left;
+  }
+}
+

@@ -1,13 +1,67 @@
 .view-all-container {
-  padding: 2rem;
-  max-width: 1100px;
+  position: relative;
+  min-height: 100vh;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  background: linear-gradient(120deg, #1c1f2b 0%, #2f3545 100%);
+  background-image: url('../assets/libimg.avif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+
   margin: auto;
+}
+
+.view-all-container::before {
+
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 39, 46, 0.82);
+  z-index: 0;
+  pointer-events: none;
+}
+.contents{
+  max-width: 1200px;
+  margin: auto;
+}
+.view-all-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.view-all-nav {
+  margin-bottom: 1.2rem;
+}
+
+.back-btn {
+  padding: 0.6rem 1.4rem;
+  background: linear-gradient(90deg, #f1c40f 60%, #3498db 100%);
+  color: #232b38;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.02rem;
+  box-shadow: 0 2px 8px rgba(241, 196, 15, 0.13);
+  cursor: pointer;
+  transition: background 0.3s, color 0.2s, transform 0.2s;
+}
+
+.back-btn:hover {
+  background: linear-gradient(90deg, #3498db 60%, #f1c40f 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
 }
 
 .view-all-title {
   text-align: center;
   margin-bottom: 1rem;
-  color: #1d3557;
+  color: #fff;
+  text-shadow: 0 2px 8px #2226;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
 .view-all-filters {
@@ -15,36 +69,144 @@
   justify-content: flex-end;
   margin-bottom: 1rem;
   gap: 1rem;
+  align-items: center;
 }
 
 .view-all-filters label {
   font-weight: bold;
+  color: #fff;
+}
+
+.view-all-filters select {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #3498db;
+  background: #232b38;
+  color: #ecf0f1;
+  font-size: 1.05rem;
+  transition: border-color 0.2s;
+}
+
+.view-all-filters select:focus {
+  border-color: #2ecc71;
+  outline: none;
 }
 
 .view-all-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   margin-top: 1rem;
+  background: rgba(255,255,255,0.98);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(44, 62, 80, 0.13);
+  overflow: hidden;
 }
 
 .view-all-table th, .view-all-table td {
-  padding: 0.75rem;
-  border: 1px solid #ddd;
+  padding: 14px 12px;
   text-align: left;
+  font-size: 1.04rem;
 }
 
 .view-all-table th {
-  background-color: #f1f1f1;
-  color: #333;
+  background: linear-gradient(90deg, #3498db 60%, #2ecc71 100%);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+}
+
+.view-all-table tr {
+  transition: background 0.2s;
+}
+
+.view-all-table tr:nth-child(even) {
+  background-color: #f0f4f8;
+}
+
+.view-all-table tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+.view-all-table td {
+  color: #2c3e50;
+  border-bottom: 1px solid #e5e9f2;
+}
+
+.view-all-table tr:last-child td {
+  border-bottom: none;
 }
 
 .view-all-error {
-  color: red;
+  color: #e74c3c;
   text-align: center;
+  font-weight: 600;
 }
 
 .view-all-message {
   text-align: center;
   font-size: 1.1rem;
   margin-top: 2rem;
+  color: #ecf0f1;
+}
+
+/* Responsive Table */
+@media (max-width: 900px) {
+  .view-all-title {
+    font-size: 1.3rem;
+  }
+  .view-all-table th, .view-all-table td {
+    font-size: 0.97rem;
+    padding: 10px 7px;
+  }
+}
+
+@media (max-width: 700px) {
+  .view-all-table,
+  .view-all-table thead,
+  .view-all-table tbody,
+  .view-all-table th,
+  .view-all-table td,
+  .view-all-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .view-all-table thead {
+    display: none;
+  }
+
+  .view-all-table tr {
+    margin-bottom: 1.2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+    background: #fff;
+    padding: 0.7rem 0.5rem;
+  }
+
+  .view-all-table td {
+    border: none;
+    padding: 8px 10px;
+    position: relative;
+    text-align: left;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .view-all-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #3498db;
+    width: 120px;
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+    font-size: 0.96rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .view-all-container {
+    padding: 1.2rem 0.3rem 1rem 0.3rem;
+  }
 }

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/StudentStats.css'
+import { useNavigate } from 'react-router-dom';
 
 const StudentStats = () => {
+   const navigate = useNavigate();
+  
   const [stats, setStats] = useState(null);
   const [error, setError] = useState(null);
 
@@ -27,6 +30,10 @@ const StudentStats = () => {
 
   return (
     <div className="stats-container">
+       <div className="statback">
+          <button className='setback' onClick={() => navigate(-1)}>Back</button>
+          
+        </div>
          <h1>📊 Library Overview</h1>
       <div className="stat-card">
        

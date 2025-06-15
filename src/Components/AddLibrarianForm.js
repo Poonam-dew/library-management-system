@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/AddlibrarianForm.css';
+import { useNavigate } from 'react-router-dom';
 
 const AddLibrarianForm = () => {
+    const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -66,6 +68,10 @@ const AddLibrarianForm = () => {
 
   return (
     <div className="add-librarian-container">
+       <div className="dashboard-back">
+          <button className='goback' onClick={() => navigate(-1)}>Back</button>
+          
+        </div>
       <h2>Add New Librarian</h2>
       <form onSubmit={handleSubmit} className="add-librarian-form">
         <label>First Name</label>

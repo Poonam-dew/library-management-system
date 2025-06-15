@@ -153,12 +153,13 @@
 }
 
 .book-card {
-  background: rgba(255, 255, 255, 0.685);
+  background: rgba(164, 228, 240, 0.832);
   padding: 1.3rem 1rem;
   border-radius: 14px;
   box-shadow: 0 8px 24px rgba(44, 62, 80, 0.13);
   display: flex;
-  max-width:fit-content;
+ flex-direction: column;
+ text-align: center;
   gap: 1.2rem;
   align-items: center;
   justify-content: center;

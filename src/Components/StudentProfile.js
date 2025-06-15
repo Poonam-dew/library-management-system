@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/StudentProfile.css';
+import { useNavigate } from 'react-router-dom';
 
 const StudentProfile = () => {
+   const navigate = useNavigate();
   const [profile, setProfile] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({});
@@ -48,9 +50,15 @@ const StudentProfile = () => {
   if (!profile) return <p>Loading...</p>;
 
   return (
-    <div className="student-profile">
+    <div className='main5'>
+        <div className="profileback">
+          <button className='profilebackbtn' onClick={() => navigate(-1)}>Back</button>
+          
+        </div>
+          <div className="student-profile">
+     
       <h2>👤 My Profile</h2>
-      <div className="profile-info">
+      <div className="profile-info5">
         {editMode ? (
           <>
             <label for='name'>Name
@@ -83,7 +91,7 @@ const StudentProfile = () => {
         )}
       </div>
 
-      <div className="student-stats">
+      <div className="student-stats5">
         <h3>📊 Library Stats</h3>
         <p><strong>Total Books Available:</strong> {profile.stats?.totalBooks}</p>
         <p><strong>Books Issued:</strong> {profile.stats?.issuedBooksCount}</p>
@@ -91,13 +99,13 @@ const StudentProfile = () => {
         <p><strong>Overdue Books:</strong> {profile.stats?.overdueBooksCount}</p>
       </div>
 
-      <div className="overdue-books">
+      <div className="overdue-books5">
         <h3>⚠️ Overdue Books</h3>
         {profile.overdueBooks?.length === 0 ? (
           <p>No overdue books!</p>
         ) : (
           profile.overdueBooks.map((book, index) => (
-            <div className="overdue-book-card" key={index}>
+            <div className="overdue-book-card5" key={index}>
               <h4>{book.title}</h4>
               <p><strong>Author:</strong> {book.author}</p>
               <p><strong>Due Date:</strong> {new Date(book.dueDate).toLocaleDateString()}</p>
@@ -106,8 +114,10 @@ const StudentProfile = () => {
         )}
       </div>
 
-      {message && <p className="status-msg">{message}</p>}
+      {message && <p className="status-msg5">{message}</p>}
     </div>
+    </div>
+   
   );
 };
 

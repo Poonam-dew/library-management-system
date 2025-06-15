@@ -2,8 +2,9 @@
 .dashboard-container {
   position: relative;
   min-height: 100vh;
-
+margin-bottom:0;
   margin: auto;
+  
   padding: 2.5rem 1.5rem 2rem 1.5rem;
   background: linear-gradient(120deg, #1c1f2b 0%, #2f3545 100%);
   background-image: url('../assets/libimg.avif');

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import '../styles/LibrarianProfile.css';
 
 const LibrarianProfile = () => {
+  const navigate = useNavigate();
   const [librarian, setLibrarian] = useState(null);
   const [editing, setEditing] = useState(false);
   const [formData, setFormData] = useState({});
@@ -52,6 +54,10 @@ const LibrarianProfile = () => {
 
   return (
     <div className="profile-container">
+        <div className="lib">
+          <button className='backmove' onClick={() => navigate(-1)}>Back</button>
+         
+        </div>
       <h2>Librarian Profile</h2>
 
       {message && <p className="message">{message}</p>}

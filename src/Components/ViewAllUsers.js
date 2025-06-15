@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import '../styles/ViewAllUsers.css';
 
 const ViewAllUsers = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
   const [roleFilter, setRoleFilter] = useState('all');
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchAllUsers();
@@ -29,6 +31,12 @@ const ViewAllUsers = () => {
 
   return (
     <div className="view-all-container">
+      <div className='contents'>
+               <div className="view-all-nav">
+        <button className="back-btn" onClick={() => navigate(-1)}>
+          &#8592; Back
+        </button>
+      </div>
       <h2 className="view-all-title">All Registered Users</h2>
 
       <div className="view-all-filters">
@@ -62,17 +70,19 @@ const ViewAllUsers = () => {
           <tbody>
             {filteredUsers.map((u) => (
               <tr key={u._id}>
-                <td>{u.firstName} {u.lastName}</td>
-                <td>{u.email}</td>
-                <td>{u.role}</td>
-                <td>{u.collegeYear || '-'}</td>
-                <td>{u.branch || '-'}</td>
-                <td>{u.isActive ? 'Active' : 'Disabled'}</td>
+                <td data-label="Name">{u.firstName} {u.lastName}</td>
+                <td data-label="Email">{u.email}</td>
+                <td data-label="Role">{u.role}</td>
+                <td data-label="Year">{u.collegeYear || '-'}</td>
+                <td data-label="Branch">{u.branch || '-'}</td>
+                <td data-label="Status">{u.isActive ? 'Active' : 'Disabled'}</td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
+      </div>
+
     </div>
   );
 };

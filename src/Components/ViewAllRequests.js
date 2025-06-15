@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/ViewAllRequests.css';
+import { useNavigate } from 'react-router-dom';
 
 const ViewAllRequests = () => {
   const [requests, setRequests] = useState([]);
@@ -13,6 +14,7 @@ const userToken = localStorage.getItem("token");
   useEffect(() => {
     fetchRequests();
   }, []);
+   const navigate = useNavigate();
 
   const fetchRequests = async () => {
     setLoading(true);
@@ -98,6 +100,12 @@ const handleMarkReturned = async (id) => {
 
   return (
     <div className="requests-container">
+      <div className='con1'>
+           <div className="manage-req">
+        <button className="back-btn1" onClick={() => navigate(-1)}>
+          &#8592; Back
+        </button>
+      </div>
       <h2>All Book Issue Requests</h2>
       {loading ? <p>Loading...</p> : error ? <p className="error">{error}</p> :
      <table className="requests-table">
@@ -118,19 +126,19 @@ const handleMarkReturned = async (id) => {
   <tbody>
     {requests.map((req) => (
       <tr key={req._id}>
-        <td>{req.book?.title}</td>
-        <td>{req.book?.author}</td>
-        <td>{req.student?.firstName} {req.student?.lastName}</td>
-        <td>{req.student?.email}</td>
-        <td>
+        <td data-label="Book Title">{req.book?.title}</td>
+        <td data-label="Author">{req.book?.author}</td>
+        <td data-label="Student Name">{req.student?.firstName} {req.student?.lastName}</td>
+        <td data-label="Email">{req.student?.email}</td>
+        <td data-label="Status">
           <span className={`status-label ${req.status}`}>
             {req.status.charAt(0).toUpperCase() + req.status.slice(1)}
           </span>
         </td>
-        <td>{new Date(req.createdAt).toLocaleString()}</td>
+        <td data-label="Requested At">{new Date(req.createdAt).toLocaleString()}</td>
 
         {/* 📅 Due Date Input */}
-        <td>
+        <td data-label="Set Due Date">
           <label htmlFor={`due-${req._id}`} className="due-label">Due:</label><br />
           <input
             type="date"
@@ -142,14 +150,14 @@ const handleMarkReturned = async (id) => {
             }
           />
         </td>
-         <td>
+         <td data-label="Selected Due date"> 
                   {req.dueDate
                     ? new Date(req.dueDate).toLocaleDateString()
                     : '—'}
                 </td>
 
         {/* ✅ Approve / ❌ Reject */}
-        <td>
+        <td data-label="Actions">
           {req.status === 'pending' ? (
             <>
               <button className="approve-btn" onClick={() => handleApprove(req._id)}>
@@ -170,7 +178,7 @@ const handleMarkReturned = async (id) => {
             </button>
           )}
         </td>
-        <td>
+        <td data-label="Returned Status">
           {req.status === 'approved' && !req.returnDate && (
   <button
     className="return-btn"
@@ -206,6 +214,8 @@ const handleMarkReturned = async (id) => {
 
 
       }
+      </div>
+     
       
     </div>
    

@@ -1,67 +1,146 @@
-.browse-books {
-  padding: 20px;
+.browse-books1 {
+  position: relative;
+  min-height: 100vh;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  max-width: 1200px;
+  
   margin: auto;
-}
-.success-message1 {
-  color: green;
-  margin: 10px 0;
-  font-weight: 600;
+  background: linear-gradient(120deg, #1c1f2b 0%, #2f3545 100%);
+  background-image: url('../assets/libimg.avif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(30, 39, 46, 0.8);
 }
 
-.page-title {
+.browse-books1::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 39, 46, 0.82);
+  border-radius: 16px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.browse-books1 > * {
+  position: relative;
+  z-index: 1;
+}
+
+.browseback {
+  margin-bottom: 1rem;
+}
+
+.browsebookback {
+  padding: 0.6rem 1.4rem;
+  background: linear-gradient(90deg, #f1c40f 60%, #3498db 100%);
+  color: #232b38;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.02rem;
+  box-shadow: 0 2px 8px rgba(241, 196, 15, 0.13);
+  cursor: pointer;
+  transition: background 0.3s, color 0.2s, transform 0.2s;
+}
+
+.browsebookback:hover {
+  background: linear-gradient(90deg, #3498db 60%, #f1c40f 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.page-title1 {
   text-align: center;
   font-size: 2rem;
-  margin-bottom: 20px;
-  color: #333;
+  margin-bottom: 2rem;
+  color: #ffe066;
+  text-shadow: 0 2px 8px #2226;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
-.search-section {
+/* Search */
+.search-section1 {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 30px;
+  gap: 12px;
+  margin-bottom: 2rem;
 }
 
-.search-section input {
-  padding: 8px 12px;
-  font-size: 1rem;
+.search-section1 input {
+  padding: 0.7rem 1rem;
+  font-size: 1.05rem;
   width: 60%;
   max-width: 400px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
+  border: 1.5px solid #3498db;
+  background: #232b38;
+  color: #ecf0f1;
+  transition: border-color 0.2s;
 }
 
-.search-section button {
-  padding: 8px 16px;
-  background-color: #0055cc;
-  color: white;
+.search-section1 input:focus {
+  border-color: #2ecc71;
+  outline: none;
+  background: #1c1f2b;
+}
+
+.search-section1 button {
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(90deg, #3498db 60%, #2ecc71 100%);
+  color: #fff;
   border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  border-radius: 8px;
+  font-weight: 600;
   font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(52, 152, 219, 0.18);
+  transition: background 0.3s, transform 0.2s;
 }
 
-.search-section button:hover {
-  background-color: #003d99;
+.search-section1 button:hover {
+  background: linear-gradient(90deg, #2980b9 60%, #27ae60 100%);
+  transform: translateY(-2px) scale(1.04);
 }
 
-.request-msg {
+.request-msg1,
+.success-message11 {
   text-align: center;
-  color: green;
-  font-weight: 500;
+  color: #2ecc71;
+  font-weight: 600;
   margin-bottom: 20px;
 }
 
-.loading,
-.error {
+.loading1,
+.error1 {
   text-align: center;
   font-size: 1.1rem;
   margin-bottom: 20px;
 }
 
-.categories-list ul {
+.error1 {
+  color: #e74c3c;
+}
+
+/* Categories */
+.categories-list1 {
+  margin-top: 2rem;
+}
+
+.categories-list1 h2 {
+  color: #ffe066;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-shadow: 0 2px 8px #2226;
+}
+
+.categories-list1 ul {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -70,90 +149,169 @@
   list-style: none;
 }
 
-.category-card {
-  padding: 15px 20px;
-  background-color: #f0f4ff;
-  border: 1px solid #0055cc;
+.category-card1 {
+  padding: 15px 24px;
+  background: linear-gradient(90deg, #f0f4ff 60%, #d6e4ff 100%);
+  border: 1.5px solid #3498db;
   border-radius: 10px;
   cursor: pointer;
-  font-weight: 500;
-  transition: background-color 0.2s ease;
+  font-weight: 600;
+  color: #3498db;
+  font-size: 1.07rem;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
 }
 
-.category-card:hover {
-  background-color: #d6e4ff;
+.category-card1:hover {
+  background: linear-gradient(90deg, #3498db 60%, #f0f4ff 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
 }
 
-.books-grid {
+/* Books grid */
+.books-grid1 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
   margin-top: 20px;
 }
 
-.book-card {
-  background-color: #fafafa;
-  padding: 15px;
-  border: 1px solid #ddd;
+.book-card1 {
+  background: rgba(216, 237, 244, 0.575);
+  padding: 1.2rem 1rem;
+  border: 1.5px solid #0f0d0d;
   border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 14px rgba(44, 62, 80, 0.10);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+ 
 }
 
-.book-image {
+.book-card1:hover {
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.13);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.book-image1 {
   width: 100px;
   height: 140px;
   object-fit: cover;
   margin-bottom: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  border-radius: 6px;
+  border: 1.5px solid #3498db;
+  background: #e0e0e0;
 }
 
-.book-card h3 {
+.book-card1 h3 {
   font-size: 1.1rem;
   margin: 10px 0 5px;
-  color: #222;
+  color: #1d5981;
+  font-weight: 700;
 }
 
-.book-card p {
-  font-size: 0.95rem;
+.book-card1 p {
+  font-size: 0.97rem;
   margin: 3px 0;
   color: #555;
 }
 
-.issue-btn {
+.issue-btn1 {
   margin-top: 10px;
-  padding: 8px 12px;
-  background-color: #28a745;
+  padding: 8px 16px;
+  background: linear-gradient(90deg, #28a745 60%, #3498db 100%);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
 }
 
-.issue-btn:disabled {
-  background-color: #999;
+.issue-btn1:disabled {
+  background: #aaa;
   cursor: not-allowed;
+  color: #fff;
 }
 
-.back-btn {
+.issue-btn1:hover:not(:disabled) {
+  background: linear-gradient(90deg, #3498db 60%, #28a745 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.back-btn1 {
   margin-bottom: 15px;
-  padding: 6px 12px;
-  background-color: #e0e0e0;
+  padding: 0.6rem 1.4rem;
+  background: linear-gradient(90deg, #f1c40f 60%, #3498db 100%);
+  color: #232b38;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.02rem;
+  box-shadow: 0 2px 8px rgba(241, 196, 15, 0.13);
   cursor: pointer;
-  font-weight: 500;
+  transition: background 0.3s, color 0.2s, transform 0.2s;
 }
 
-.books-in-category > h2,
-.search-results > h2 {
+.back-btn1:hover {
+  background: linear-gradient(90deg, #3498db 60%, #f1c40f 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.books-in-category1 > h2,
+.search-results1 > h2 {
   text-align: center;
   margin-bottom: 15px;
-  color: #444;
+  color: #ffe066;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-shadow: 0 2px 8px #2226;
 }
 
+/* Responsive Design */
+@media (max-width: 900px) {
+  .browse-books1 {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    border-radius: 10px;
+  }
+  .books-grid1 {
+    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  .book-card1 {
+    padding: 0.7rem 0.5rem;
+    border-radius: 8px;
+  }
+  .book-image1 {
+    width: 70px;
+    height: 100px;
+  }
+  .category-card1 {
+    padding: 10px 14px;
+    font-size: 0.97rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .books-grid1 {
+    gap: 8px;
+    grid-template-columns: 1fr;
+  }
+  .category-card1 {
+    padding: 8px 8px;
+    font-size: 0.93rem;
+  }
+  .search-section1 input {
+    width: 100%;
+    max-width: 100%;
+    font-size: 0.97rem;
+    padding: 0.5rem 0.7rem;
+  }
+  .search-section1 button {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+}

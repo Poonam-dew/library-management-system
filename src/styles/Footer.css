@@ -8,10 +8,10 @@
   justify-content: space-between;
   gap: 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
+  /* border-top-left-radius: 16px;
+  border-top-right-radius: 16px; */
   box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.3);
-  margin-top: 6rem;
+ 
 }
 
 .footer-section {

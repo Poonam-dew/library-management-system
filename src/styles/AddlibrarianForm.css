@@ -1,61 +1,146 @@
-/* src/styles/AddLibrarianForm.css */
 .add-librarian-container {
-  max-width: 500px;
+  position: relative;
+ 
   margin: 3rem auto;
-  padding: 2rem;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background-color: #fafafa;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  background: linear-gradient(120deg, #1c1f2b 0%, #2f3545 100%);
+  background-image: url('../assets/libimg.avif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(30, 39, 46, 0.8);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.add-librarian-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 39, 46, 0.82);
+  border-radius: 16px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.add-librarian-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard-back {
+  margin-bottom: 1rem;
+}
+
+.goback {
+  padding: 0.6rem 1.4rem;
+  background: linear-gradient(90deg, #f1c40f 60%, #3498db 100%);
+  color: #232b38;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.02rem;
+  box-shadow: 0 2px 8px rgba(241, 196, 15, 0.13);
+  cursor: pointer;
+  transition: background 0.3s, color 0.2s, transform 0.2s;
+}
+
+.goback:hover {
+  background: linear-gradient(90deg, #3498db 60%, #f1c40f 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
 }
 
 .add-librarian-container h2 {
   text-align: center;
   margin-bottom: 1.5rem;
-  color: #1a1a1a;
+  color: #fff;
+  text-shadow: 0 2px 8px #2226;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
 .add-librarian-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding:2rem;
 }
 
 .add-librarian-form label {
-  font-weight: bold;
-  color: #444;
+  font-weight: 600;
+  color: #3498db;
 }
 
 .add-librarian-form input {
-  padding: 0.6rem;
+  padding: 0.7rem;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1.5px solid #2980b9;
   font-size: 1rem;
+  background: #232b38;
+  color: #ecf0f1;
+  transition: border-color 0.2s;
+}
+
+.add-librarian-form input:focus {
+  border-color: #2ecc71;
+  outline: none;
+  background: #1c1f2b;
 }
 
 .add-librarian-form button {
   margin-top: 1rem;
   padding: 0.7rem;
-  background-color: #1d3557;
+  background: linear-gradient(90deg, #3498db 60%, #2ecc71 100%);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.08rem;
   cursor: pointer;
-  font-weight: bold;
+  box-shadow: 0 4px 14px rgba(52, 152, 219, 0.18);
+  transition: background 0.3s, transform 0.2s;
 }
 
 .add-librarian-form button:hover {
-  background-color: #457b9d;
+  background: linear-gradient(90deg, #2980b9 60%, #27ae60 100%);
+  transform: translateY(-2px) scale(1.04);
 }
 
 .success {
-  color: green;
+  color: #2ecc71;
   margin-top: 0.5rem;
   text-align: center;
+  font-weight: 600;
 }
 
 .error {
-  color: red;
+  color: #e74c3c;
   margin-top: 0.5rem;
   text-align: center;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .add-librarian-container {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    border-radius: 10px;
+  }
+  .add-librarian-container h2 {
+    font-size: 1.2rem;
+  }
+  .add-librarian-form input {
+    font-size: 0.97rem;
+    padding: 0.55rem;
+  }
+  .add-librarian-form button {
+    font-size: 0.98rem;
+    padding: 0.6rem;
+  }
 }

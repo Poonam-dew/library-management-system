@@ -23,6 +23,7 @@ export default function StudentNavbar() {
       </div>
 
       <ul className={`student-navbar-links ${menuOpen ? 'open' : ''}`}>
+        <li onClick={() => navigate('/')}>Home</li>
         <li onClick={() => navigate('/student-dashboard')}>Dashboard</li>
         <li onClick={() => navigate('/student/request')}>My Requests</li>
         <li onClick={() => navigate('/student-profile')}>Profile</li>

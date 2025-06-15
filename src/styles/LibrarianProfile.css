@@ -1,67 +1,160 @@
 .profile-container {
-  max-width: 600px;
-  margin: auto;
-  padding: 2rem;
-  background: #fff;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+ 
+  margin: 3rem auto;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  background: linear-gradient(120deg, #1c1f2b 0%, #2f3545 100%);
+  background-image: url('../assets/libimg.avif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(30, 39, 46, 0.8);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.profile-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 39, 46, 0.82);
+  border-radius: 16px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.profile-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.lib {
+  margin-bottom: 1rem;
+}
+
+.backmove {
+  padding: 0.6rem 1.4rem;
+  background: linear-gradient(90deg, #f1c40f 60%, #3498db 100%);
+  color: #232b38;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.02rem;
+  box-shadow: 0 2px 8px rgba(241, 196, 15, 0.13);
+  cursor: pointer;
+  transition: background 0.3s, color 0.2s, transform 0.2s;
+}
+
+.backmove:hover {
+  background: linear-gradient(90deg, #3498db 60%, #f1c40f 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
 }
 
 h2 {
   text-align: center;
-  color: #2c3e50;
+  color: #fff;
+  text-shadow: 0 2px 8px #2226;
   margin-bottom: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
 .profile-details {
   display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 10px 20px;
-  margin-bottom: 1rem;
+  grid-template-columns: 140px 1fr;
+  gap: 12px 18px;
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 1.5rem;
+  background: rgba(232, 225, 225, 0.732);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.10);
 }
 
 .profile-details label {
-  font-weight: bold;
-  color: #34495e;
+  font-weight: 600;
+  color: #003f69;
   align-self: center;
 }
 
 .profile-details span,
 .profile-details input {
-  padding: 0.4rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
   background: #f9f9f9;
+  color: #2c3e50;
+  font-size: 1rem;
 }
 
 .profile-details input {
   background: #fff;
+  border: 1.5px solid #2980b9;
+  color: #232b38;
+  transition: border-color 0.2s;
+}
+
+.profile-details input:focus {
+  border-color: #2ecc71;
+  outline: none;
+  background: #eafaf1;
 }
 
 .profile-buttons {
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .profile-buttons button {
-  padding: 0.5rem 1.2rem;
+  padding: 0.6rem 1.5rem;
   margin: 0 0.5rem;
-  background-color: #007bff;
+  background: linear-gradient(90deg, #3498db 60%, #2ecc71 100%);
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   color: white;
+  font-weight: 700;
+  font-size: 1.08rem;
   cursor: pointer;
-  transition: 0.3s;
+  box-shadow: 0 4px 14px rgba(52, 152, 219, 0.18);
+  transition: background 0.3s, transform 0.2s;
 }
 
 .profile-buttons button:hover {
-  background-color: #0056b3;
+  background: linear-gradient(90deg, #2980b9 60%, #27ae60 100%);
+  transform: translateY(-2px) scale(1.04);
 }
 
 .message {
   text-align: center;
-  color: green;
+  color: #2ecc71;
   font-weight: bold;
   margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .profile-container {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    border-radius: 10px;
+  }
+  .profile-details {
+    grid-template-columns: 1fr;
+    gap: 8px 0;
+    padding: 1rem 0.5rem;
+  }
+  .profile-details label {
+    margin-bottom: 0.2rem;
+  }
+  .profile-buttons button {
+    font-size: 0.98rem;
+    padding: 0.6rem 1rem;
+    margin: 0.3rem 0.2rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
 }
